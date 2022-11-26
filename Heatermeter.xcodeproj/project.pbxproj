@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E22728029324D6200BC7ED0 /* HeatermeterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22727F29324D6200BC7ED0 /* HeatermeterApp.swift */; };
+		5E22728229324D6200BC7ED0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22728129324D6200BC7ED0 /* ContentView.swift */; };
+		5E22728429324D6300BC7ED0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E22728329324D6300BC7ED0 /* Assets.xcassets */; };
+		5E22728729324D6300BC7ED0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E22728629324D6300BC7ED0 /* Preview Assets.xcassets */; };
+		5E22729129324D6300BC7ED0 /* HeatermeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22729029324D6300BC7ED0 /* HeatermeterTests.swift */; };
+		5E22729B29324D6300BC7ED0 /* HeatermeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22729A29324D6300BC7ED0 /* HeatermeterUITests.swift */; };
+		5E22729D29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22729C29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5E22728D29324D6300BC7ED0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E22727429324D6200BC7ED0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E22727B29324D6200BC7ED0;
+			remoteInfo = Heatermeter;
+		};
+		5E22729729324D6300BC7ED0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E22727429324D6200BC7ED0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E22727B29324D6200BC7ED0;
+			remoteInfo = Heatermeter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5E22727C29324D6200BC7ED0 /* Heatermeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heatermeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E22727F29324D6200BC7ED0 /* HeatermeterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatermeterApp.swift; sourceTree = "<group>"; };
+		5E22728129324D6200BC7ED0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5E22728329324D6300BC7ED0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5E22728629324D6300BC7ED0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5E22728C29324D6300BC7ED0 /* HeatermeterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeatermeterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E22729029324D6300BC7ED0 /* HeatermeterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatermeterTests.swift; sourceTree = "<group>"; };
+		5E22729629324D6300BC7ED0 /* HeatermeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeatermeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E22729A29324D6300BC7ED0 /* HeatermeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatermeterUITests.swift; sourceTree = "<group>"; };
+		5E22729C29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatermeterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E22727929324D6200BC7ED0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E22728929324D6300BC7ED0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E22729329324D6300BC7ED0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E22727329324D6200BC7ED0 = {
+			isa = PBXGroup;
+			children = (
+				5E22727E29324D6200BC7ED0 /* Heatermeter */,
+				5E22728F29324D6300BC7ED0 /* HeatermeterTests */,
+				5E22729929324D6300BC7ED0 /* HeatermeterUITests */,
+				5E22727D29324D6200BC7ED0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5E22727D29324D6200BC7ED0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E22727C29324D6200BC7ED0 /* Heatermeter.app */,
+				5E22728C29324D6300BC7ED0 /* HeatermeterTests.xctest */,
+				5E22729629324D6300BC7ED0 /* HeatermeterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E22727E29324D6200BC7ED0 /* Heatermeter */ = {
+			isa = PBXGroup;
+			children = (
+				5E22727F29324D6200BC7ED0 /* HeatermeterApp.swift */,
+				5E22728129324D6200BC7ED0 /* ContentView.swift */,
+				5E22728329324D6300BC7ED0 /* Assets.xcassets */,
+				5E22728529324D6300BC7ED0 /* Preview Content */,
+			);
+			path = Heatermeter;
+			sourceTree = "<group>";
+		};
+		5E22728529324D6300BC7ED0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5E22728629324D6300BC7ED0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5E22728F29324D6300BC7ED0 /* HeatermeterTests */ = {
+			isa = PBXGroup;
+			children = (
+				5E22729029324D6300BC7ED0 /* HeatermeterTests.swift */,
+			);
+			path = HeatermeterTests;
+			sourceTree = "<group>";
+		};
+		5E22729929324D6300BC7ED0 /* HeatermeterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5E22729A29324D6300BC7ED0 /* HeatermeterUITests.swift */,
+				5E22729C29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift */,
+			);
+			path = HeatermeterUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E22727B29324D6200BC7ED0 /* Heatermeter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E2272A029324D6300BC7ED0 /* Build configuration list for PBXNativeTarget "Heatermeter" */;
+			buildPhases = (
+				5E22727829324D6200BC7ED0 /* Sources */,
+				5E22727929324D6200BC7ED0 /* Frameworks */,
+				5E22727A29324D6200BC7ED0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Heatermeter;
+			productName = Heatermeter;
+			productReference = 5E22727C29324D6200BC7ED0 /* Heatermeter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5E22728B29324D6300BC7ED0 /* HeatermeterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E2272A329324D6300BC7ED0 /* Build configuration list for PBXNativeTarget "HeatermeterTests" */;
+			buildPhases = (
+				5E22728829324D6300BC7ED0 /* Sources */,
+				5E22728929324D6300BC7ED0 /* Frameworks */,
+				5E22728A29324D6300BC7ED0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E22728E29324D6300BC7ED0 /* PBXTargetDependency */,
+			);
+			name = HeatermeterTests;
+			productName = HeatermeterTests;
+			productReference = 5E22728C29324D6300BC7ED0 /* HeatermeterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5E22729529324D6300BC7ED0 /* HeatermeterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E2272A629324D6300BC7ED0 /* Build configuration list for PBXNativeTarget "HeatermeterUITests" */;
+			buildPhases = (
+				5E22729229324D6300BC7ED0 /* Sources */,
+				5E22729329324D6300BC7ED0 /* Frameworks */,
+				5E22729429324D6300BC7ED0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E22729829324D6300BC7ED0 /* PBXTargetDependency */,
+			);
+			name = HeatermeterUITests;
+			productName = HeatermeterUITests;
+			productReference = 5E22729629324D6300BC7ED0 /* HeatermeterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E22727429324D6200BC7ED0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					5E22727B29324D6200BC7ED0 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					5E22728B29324D6300BC7ED0 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 5E22727B29324D6200BC7ED0;
+					};
+					5E22729529324D6300BC7ED0 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 5E22727B29324D6200BC7ED0;
+					};
+				};
+			};
+			buildConfigurationList = 5E22727729324D6200BC7ED0 /* Build configuration list for PBXProject "Heatermeter" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5E22727329324D6200BC7ED0;
+			productRefGroup = 5E22727D29324D6200BC7ED0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E22727B29324D6200BC7ED0 /* Heatermeter */,
+				5E22728B29324D6300BC7ED0 /* HeatermeterTests */,
+				5E22729529324D6300BC7ED0 /* HeatermeterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5E22727A29324D6200BC7ED0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E22728729324D6300BC7ED0 /* Preview Assets.xcassets in Resources */,
+				5E22728429324D6300BC7ED0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E22728A29324D6300BC7ED0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E22729429324D6300BC7ED0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E22727829324D6200BC7ED0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E22728229324D6200BC7ED0 /* ContentView.swift in Sources */,
+				5E22728029324D6200BC7ED0 /* HeatermeterApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E22728829324D6300BC7ED0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E22729129324D6300BC7ED0 /* HeatermeterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E22729229324D6300BC7ED0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E22729B29324D6300BC7ED0 /* HeatermeterUITests.swift in Sources */,
+				5E22729D29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5E22728E29324D6300BC7ED0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E22727B29324D6200BC7ED0 /* Heatermeter */;
+			targetProxy = 5E22728D29324D6300BC7ED0 /* PBXContainerItemProxy */;
+		};
+		5E22729829324D6300BC7ED0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E22727B29324D6200BC7ED0 /* Heatermeter */;
+			targetProxy = 5E22729729324D6300BC7ED0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5E22729E29324D6300BC7ED0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5E22729F29324D6300BC7ED0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E2272A129324D6300BC7ED0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Heatermeter/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gkagan.Heatermeter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E2272A229324D6300BC7ED0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Heatermeter/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gkagan.Heatermeter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5E2272A429324D6300BC7ED0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gkagan.HeatermeterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Heatermeter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Heatermeter";
+			};
+			name = Debug;
+		};
+		5E2272A529324D6300BC7ED0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gkagan.HeatermeterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Heatermeter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Heatermeter";
+			};
+			name = Release;
+		};
+		5E2272A729324D6300BC7ED0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gkagan.HeatermeterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Heatermeter;
+			};
+			name = Debug;
+		};
+		5E2272A829324D6300BC7ED0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gkagan.HeatermeterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Heatermeter;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E22727729324D6200BC7ED0 /* Build configuration list for PBXProject "Heatermeter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E22729E29324D6300BC7ED0 /* Debug */,
+				5E22729F29324D6300BC7ED0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E2272A029324D6300BC7ED0 /* Build configuration list for PBXNativeTarget "Heatermeter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E2272A129324D6300BC7ED0 /* Debug */,
+				5E2272A229324D6300BC7ED0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E2272A329324D6300BC7ED0 /* Build configuration list for PBXNativeTarget "HeatermeterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E2272A429324D6300BC7ED0 /* Debug */,
+				5E2272A529324D6300BC7ED0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E2272A629324D6300BC7ED0 /* Build configuration list for PBXNativeTarget "HeatermeterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E2272A729324D6300BC7ED0 /* Debug */,
+				5E2272A829324D6300BC7ED0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E22727429324D6200BC7ED0 /* Project object */;
+}
