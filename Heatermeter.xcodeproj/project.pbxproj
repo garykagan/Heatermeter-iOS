@@ -14,6 +14,11 @@
 		5E22729129324D6300BC7ED0 /* HeatermeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22729029324D6300BC7ED0 /* HeatermeterTests.swift */; };
 		5E22729B29324D6300BC7ED0 /* HeatermeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22729A29324D6300BC7ED0 /* HeatermeterUITests.swift */; };
 		5E22729D29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22729C29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift */; };
+		5E2272AB29324D9500BC7ED0 /* ServiceDiscovery in Frameworks */ = {isa = PBXBuildFile; productRef = 5E2272AA29324D9500BC7ED0 /* ServiceDiscovery */; };
+		5E5280552936CD83003BE095 /* CurrentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280542936CD83003BE095 /* CurrentStatus.swift */; };
+		5E5280582936D0F9003BE095 /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280572936D0F9003BE095 /* Temp.swift */; };
+		5E52805A2936D109003BE095 /* Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280592936D109003BE095 /* Fan.swift */; };
+		5E52805C2936D12E003BE095 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E52805B2936D12E003BE095 /* Alarm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,10 @@
 		5E22729629324D6300BC7ED0 /* HeatermeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeatermeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E22729A29324D6300BC7ED0 /* HeatermeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatermeterUITests.swift; sourceTree = "<group>"; };
 		5E22729C29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatermeterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5E5280542936CD83003BE095 /* CurrentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentStatus.swift; sourceTree = "<group>"; };
+		5E5280572936D0F9003BE095 /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
+		5E5280592936D109003BE095 /* Fan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fan.swift; sourceTree = "<group>"; };
+		5E52805B2936D12E003BE095 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E2272AB29324D9500BC7ED0 /* ServiceDiscovery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +106,7 @@
 			children = (
 				5E22727F29324D6200BC7ED0 /* HeatermeterApp.swift */,
 				5E22728129324D6200BC7ED0 /* ContentView.swift */,
+				5E5280562936D0EE003BE095 /* Models */,
 				5E22728329324D6300BC7ED0 /* Assets.xcassets */,
 				5E22728529324D6300BC7ED0 /* Preview Content */,
 			);
@@ -127,6 +138,17 @@
 			path = HeatermeterUITests;
 			sourceTree = "<group>";
 		};
+		5E5280562936D0EE003BE095 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E5280542936CD83003BE095 /* CurrentStatus.swift */,
+				5E5280572936D0F9003BE095 /* Temp.swift */,
+				5E5280592936D109003BE095 /* Fan.swift */,
+				5E52805B2936D12E003BE095 /* Alarm.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +165,9 @@
 			dependencies = (
 			);
 			name = Heatermeter;
+			packageProductDependencies = (
+				5E2272AA29324D9500BC7ED0 /* ServiceDiscovery */,
+			);
 			productName = Heatermeter;
 			productReference = 5E22727C29324D6200BC7ED0 /* Heatermeter.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +240,9 @@
 				Base,
 			);
 			mainGroup = 5E22727329324D6200BC7ED0;
+			packageReferences = (
+				5E2272A929324D9500BC7ED0 /* XCRemoteSwiftPackageReference "swift-service-discovery" */,
+			);
 			productRefGroup = 5E22727D29324D6200BC7ED0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,7 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E22728229324D6200BC7ED0 /* ContentView.swift in Sources */,
+				5E5280552936CD83003BE095 /* CurrentStatus.swift in Sources */,
+				5E52805A2936D109003BE095 /* Fan.swift in Sources */,
 				5E22728029324D6200BC7ED0 /* HeatermeterApp.swift in Sources */,
+				5E5280582936D0F9003BE095 /* Temp.swift in Sources */,
+				5E52805C2936D12E003BE095 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +609,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5E2272A929324D9500BC7ED0 /* XCRemoteSwiftPackageReference "swift-service-discovery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-service-discovery";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5E2272AA29324D9500BC7ED0 /* ServiceDiscovery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E2272A929324D9500BC7ED0 /* XCRemoteSwiftPackageReference "swift-service-discovery" */;
+			productName = ServiceDiscovery;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5E22727429324D6200BC7ED0 /* Project object */;
 }
