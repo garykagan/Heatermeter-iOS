@@ -56,6 +56,7 @@
 		5E52805B2936D12E003BE095 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		5E52806729379D10003BE095 /* DeviceDiscoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryViewModel.swift; sourceTree = "<group>"; };
 		5E52806929379D1C003BE095 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		5E52806B293A5EA9003BE095 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +107,7 @@
 		5E22727E29324D6200BC7ED0 /* Heatermeter */ = {
 			isa = PBXGroup;
 			children = (
+				5E52806B293A5EA9003BE095 /* Info.plist */,
 				5E22727F29324D6200BC7ED0 /* HeatermeterApp.swift */,
 				5E52806729379D10003BE095 /* DeviceDiscoveryViewModel.swift */,
 				5E22728129324D6200BC7ED0 /* ContentView.swift */,
@@ -455,6 +457,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Heatermeter/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Heatermeter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -483,6 +486,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Heatermeter/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Heatermeter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

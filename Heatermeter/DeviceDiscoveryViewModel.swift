@@ -6,32 +6,68 @@
 //
 
 import Foundation
-import Network
+import dnssd
 
 class DeviceDiscoveryViewModel {
-    let browser: NWBrowser
+    private var serviceRef: DNSServiceRef? = nil
     
     @Published var devices: [Device] = []
-    
-    init() {
-        self.browser = NWBrowser(for: .applicationService(name: "_http._tcp "), using: .tcp)
-    }
-    
+
     func start() {
-        browser.browseResultsChangedHandler = { [weak self] results, changes in
-            guard let self = self else { return }
-            self.handleResults(results: results)
+        guard serviceRef == nil else {
+            return
         }
-        browser.start(queue: .global())
+        
+        let context = Unmanaged.passUnretained(self).toOpaque()
+        
+        var errorCode = DNSServiceBrowse(&serviceRef,
+                                         0,
+                                         0,
+                                         "_http._tcp",
+                                         "",
+                                         browseReplyFunction(),
+                                         context)
+        
+        if errorCode == kDNSServiceErr_NoError {
+            errorCode = DNSServiceSetDispatchQueue(serviceRef,
+                                                   DispatchQueue.global())
+        }
+        
+        if errorCode == kDNSServiceErr_NoError {
+            // Report start success
+        } else {
+            // Report start failure
+        }
     }
     
-    func handleResults(results: Set<NWBrowser.Result>) {
-        var devices: [Device] = []
-        for result in results {
-            // Check if its a heatermeter
-            // If so add it to the devices array
-//            The service is advertised as an _http._tcp (Web Site) service with the name HeaterMeter BBQ Controller on %h where %h is the hostname. The txt record contains a path key which is the URI of the LinkMeter webpage. All REST API functions are under the URI /luci/lm/api
+    func browseReply(flags: DNSServiceFlags, domain: String, type: String, name: String) {
+        // Do something with the browse reply
+    }
+    
+    private func browseReplyFunction() -> DNSServiceBrowseReply {
+        return { serviceRef, flags, interfaceIndex, errorCode, serviceName, regType, replyDomain, context in
+            
+            guard let context = context else { return }
+            
+            let capturedSelf = Unmanaged<DeviceDiscoveryViewModel>.fromOpaque(context).takeUnretainedValue()
+            
+            capturedSelf.browseReply(flags: flags,
+                                     domain: replyDomain.unwrap(),
+                                     type: regType.unwrap(),
+                                     name: serviceName.unwrap())
         }
-        self.devices = devices
+    }
+}
+
+extension Optional where Wrapped == UnsafePointer<CChar> {
+    func unwrap(fallback: String = "") -> String {
+        let value: String
+        if let cValue = self {
+            value = String(cString: cValue)
+        } else {
+            value = fallback
+        }
+        
+        return value
     }
 }
