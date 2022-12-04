@@ -14,12 +14,17 @@
 		5E22729129324D6300BC7ED0 /* HeatermeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22729029324D6300BC7ED0 /* HeatermeterTests.swift */; };
 		5E22729B29324D6300BC7ED0 /* HeatermeterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22729A29324D6300BC7ED0 /* HeatermeterUITests.swift */; };
 		5E22729D29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22729C29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift */; };
+		5E435237293CE17500C65E0D /* Optional+CString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E435236293CE17500C65E0D /* Optional+CString.swift */; };
 		5E5280552936CD83003BE095 /* CurrentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280542936CD83003BE095 /* CurrentStatus.swift */; };
 		5E5280582936D0F9003BE095 /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280572936D0F9003BE095 /* Temp.swift */; };
 		5E52805A2936D109003BE095 /* Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280592936D109003BE095 /* Fan.swift */; };
 		5E52805C2936D12E003BE095 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E52805B2936D12E003BE095 /* Alarm.swift */; };
 		5E52806829379D10003BE095 /* DeviceDiscoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E52806729379D10003BE095 /* DeviceDiscoveryViewModel.swift */; };
 		5E52806A29379D1C003BE095 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E52806929379D1C003BE095 /* Device.swift */; };
+		5E528071293A71F9003BE095 /* DNSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528070293A71F9003BE095 /* DNSService.swift */; };
+		5E528073293AB7D5003BE095 /* DNSServiceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528072293AB7D5003BE095 /* DNSServiceResolver.swift */; };
+		5E528075293BE76B003BE095 /* DNSServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528074293BE76B003BE095 /* DNSServiceBrowser.swift */; };
+		5E528077293BF0C5003BE095 /* DeviceDiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528076293BF0C5003BE095 /* DeviceDiscoveryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,7 @@
 		5E22729629324D6300BC7ED0 /* HeatermeterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeatermeterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E22729A29324D6300BC7ED0 /* HeatermeterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatermeterUITests.swift; sourceTree = "<group>"; };
 		5E22729C29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatermeterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5E435236293CE17500C65E0D /* Optional+CString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+CString.swift"; sourceTree = "<group>"; };
 		5E5280542936CD83003BE095 /* CurrentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentStatus.swift; sourceTree = "<group>"; };
 		5E5280572936D0F9003BE095 /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
 		5E5280592936D109003BE095 /* Fan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fan.swift; sourceTree = "<group>"; };
@@ -57,6 +63,10 @@
 		5E52806729379D10003BE095 /* DeviceDiscoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryViewModel.swift; sourceTree = "<group>"; };
 		5E52806929379D1C003BE095 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		5E52806B293A5EA9003BE095 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5E528070293A71F9003BE095 /* DNSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSService.swift; sourceTree = "<group>"; };
+		5E528072293AB7D5003BE095 /* DNSServiceResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSServiceResolver.swift; sourceTree = "<group>"; };
+		5E528074293BE76B003BE095 /* DNSServiceBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSServiceBrowser.swift; sourceTree = "<group>"; };
+		5E528076293BF0C5003BE095 /* DeviceDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +120,9 @@
 				5E52806B293A5EA9003BE095 /* Info.plist */,
 				5E22727F29324D6200BC7ED0 /* HeatermeterApp.swift */,
 				5E52806729379D10003BE095 /* DeviceDiscoveryViewModel.swift */,
+				5E528076293BF0C5003BE095 /* DeviceDiscoveryView.swift */,
 				5E22728129324D6200BC7ED0 /* ContentView.swift */,
+				5E435235293CE13900C65E0D /* Service Discovery */,
 				5E5280562936D0EE003BE095 /* Models */,
 				5E22728329324D6300BC7ED0 /* Assets.xcassets */,
 				5E22728529324D6300BC7ED0 /* Preview Content */,
@@ -141,6 +153,17 @@
 				5E22729C29324D6300BC7ED0 /* HeatermeterUITestsLaunchTests.swift */,
 			);
 			path = HeatermeterUITests;
+			sourceTree = "<group>";
+		};
+		5E435235293CE13900C65E0D /* Service Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				5E528070293A71F9003BE095 /* DNSService.swift */,
+				5E528072293AB7D5003BE095 /* DNSServiceResolver.swift */,
+				5E528074293BE76B003BE095 /* DNSServiceBrowser.swift */,
+				5E435236293CE17500C65E0D /* Optional+CString.swift */,
+			);
+			path = "Service Discovery";
 			sourceTree = "<group>";
 		};
 		5E5280562936D0EE003BE095 /* Models */ = {
@@ -291,11 +314,16 @@
 			files = (
 				5E22728229324D6200BC7ED0 /* ContentView.swift in Sources */,
 				5E5280552936CD83003BE095 /* CurrentStatus.swift in Sources */,
+				5E435237293CE17500C65E0D /* Optional+CString.swift in Sources */,
 				5E52805A2936D109003BE095 /* Fan.swift in Sources */,
 				5E22728029324D6200BC7ED0 /* HeatermeterApp.swift in Sources */,
 				5E52806829379D10003BE095 /* DeviceDiscoveryViewModel.swift in Sources */,
 				5E5280582936D0F9003BE095 /* Temp.swift in Sources */,
+				5E528075293BE76B003BE095 /* DNSServiceBrowser.swift in Sources */,
+				5E528077293BF0C5003BE095 /* DeviceDiscoveryView.swift in Sources */,
+				5E528073293AB7D5003BE095 /* DNSServiceResolver.swift in Sources */,
 				5E52805C2936D12E003BE095 /* Alarm.swift in Sources */,
+				5E528071293A71F9003BE095 /* DNSService.swift in Sources */,
 				5E52806A29379D1C003BE095 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

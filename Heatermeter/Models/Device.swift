@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct Device: Codable {
+struct Device: Codable, Hashable, Identifiable {
+    var id = UUID()
     
+    let name: String
+    let host: String
+    let port: UInt16
 }
