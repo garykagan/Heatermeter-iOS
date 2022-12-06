@@ -7,14 +7,11 @@
 
 import Foundation
 import dnssd
+import Combine
 
 class DNSServiceBrowser {
+    let dnsServicePublisher = PassthroughSubject<DNSService, Never>()
     var serviceRef: DNSServiceRef? = nil
-    let resolver: DNSServiceResolver
-    
-    init(foundDeviceCallback: @escaping (Device) -> Void) {
-        self.resolver = DNSServiceResolver(foundDeviceCallback: foundDeviceCallback)
-    }
     
     private func browseReplyFunction() -> DNSServiceBrowseReply {
         return { serviceRef, flags, interfaceIndex, errorCode, serviceName, regType, replyDomain, context in
@@ -37,8 +34,8 @@ class DNSServiceBrowser {
         let service = DNSService(type: type,
                                  domain: domain,
                                  name: name)
-        print("===GK===", "found service", service)
-        resolver.resolve(service: service)
+        print(service)
+        dnsServicePublisher.send(service)
     }
     
     func browse(_ service: DNSService) {
@@ -59,12 +56,23 @@ class DNSServiceBrowser {
         if errorCode == kDNSServiceErr_NoError {
             errorCode = DNSServiceSetDispatchQueue(serviceRef,
                                                    DispatchQueue.main)
+        } else if errorCode == kDNSServiceErr_NoAuth {
+            print("Error, no auth")
+        } else {
+            print("Error", errorCode)
         }
         
         if errorCode == kDNSServiceErr_NoError {
             // Report start success
         } else {
             // Report start failure
+            print("Error", errorCode)
+        }
+    }
+    
+    func stop() {
+        if self.serviceRef != nil {
+            DNSServiceRefDeallocate(self.serviceRef)
         }
     }
 }

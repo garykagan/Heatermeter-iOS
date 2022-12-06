@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct Temp: Codable {
-    struct RF: Codable {
+struct Temp: Codable, Identifiable, Equatable {
+    var id = UUID()
+    
+    struct RF: Codable, Equatable {
         enum CodingKeys: String, CodingKey {
             case signal = "s"
             case lowBattery = "b"
@@ -36,7 +38,7 @@ struct Temp: Codable {
     }
     
     let name: String
-    let currentTemp: Double
+    let currentTemp: Double?
     let degreesPerHour: Double?
     let alarm: Alarm
     let rf: RF?

@@ -4,7 +4,9 @@
 <dict>
 	<key>NSBonjourServices</key>
 	<array>
-		<string>_http._tcp </string>
+		<string>_bonjour._tcp</string>
+		<string>_http._tcp.</string>
+		<string>_lnp._tcp.</string>
 	</array>
 </dict>
 </plist>

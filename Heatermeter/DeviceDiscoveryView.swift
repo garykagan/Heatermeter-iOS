@@ -15,9 +15,13 @@ struct DeviceDiscoveryView: View {
     var body: some View {
         List {
             ForEach(viewModel.devices) { device in
-                Text(device.host)
+                NavigationLink(device.host,
+                               value: device)
             }
         }
-        .padding()
+        .navigationTitle("Found HeaterMeters")
+        .navigationDestination(for: Device.self) { device in
+            DeviceView(viewModel: DeviceViewModelImpl(device: device))
+        }
     }
 }

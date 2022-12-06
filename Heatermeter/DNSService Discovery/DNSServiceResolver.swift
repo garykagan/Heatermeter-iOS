@@ -7,17 +7,15 @@
 
 import Foundation
 import dnssd
+import Combine
 
 class DNSServiceResolver {
+    public let devicePublisher = PassthroughSubject<Device, Never>()
     private var serviceRef: DNSServiceRef? = nil
-    let foundDeviceCallback: (Device) -> Void
-    
-    init(foundDeviceCallback: @escaping (Device) -> Void) {
-        self.foundDeviceCallback = foundDeviceCallback
-    }
     
     func resolve(service: DNSService) {
         if serviceRef == nil {
+            print("attempting to resolve", service)
             let context = Unmanaged.passUnretained(self).toOpaque()
             
             var errorCode = DNSServiceResolve(&serviceRef,
@@ -53,8 +51,7 @@ class DNSServiceResolver {
             let device = contextContainer.createDevice(fullName: fullName.unwrap(),
                                                                     host: hosttarget.unwrap(),
                                                                     port: port)
-            print("===GK===", "Device", device)
-            contextContainer.foundDeviceCallback(device)
+            contextContainer.devicePublisher.send(device)
         }
     }
     
@@ -62,5 +59,11 @@ class DNSServiceResolver {
         return Device(name: fullName,
                       host: host,
                       port: port)
+    }
+    
+    func stop() {
+        if self.serviceRef != nil {
+            DNSServiceRefDeallocate(self.serviceRef)
+        }
     }
 }

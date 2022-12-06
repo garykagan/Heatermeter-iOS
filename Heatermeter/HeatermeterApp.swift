@@ -10,17 +10,14 @@ import Combine
 
 @main
 struct HeatermeterApp: App {
-    let discovery: DeviceDiscoveryViewModel
-    var c: Cancellable? = nil
-    init() {
-        self.discovery = DeviceDiscoveryViewModel()
-        self.c = self.discovery.$devices.sink(receiveValue: { devices in
-            print("Got Devices", devices)
-        })
-    }
     var body: some Scene {
         WindowGroup {
-            DeviceDiscoveryView(viewModel: self.discovery)
+            NavigationStack {
+                DeviceDiscoveryView(viewModel: DeviceDiscoveryViewModel())
+            }
         }
+    }
+    
+    init() {
     }
 }

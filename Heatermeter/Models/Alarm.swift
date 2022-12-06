@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Alarm: Codable {
+struct Alarm: Codable, Equatable {
     enum RingType: String, Codable {
         case high = "H"
         case low = "L"
@@ -19,7 +19,7 @@ struct Alarm: Codable {
         case ringing = "r"
     }
     
-    let low: Double
-    let high: Double
+    let low: Int
+    let high: Int
     let ringing: RingType?
 }
