@@ -34,6 +34,8 @@
 		5E8A79D3293EB09B00C328A2 /* DeviceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A79D2293EB09B00C328A2 /* DeviceStatusView.swift */; };
 		5E8A79D7293ED54F00C328A2 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A79D6293ED54F00C328A2 /* NumberFormatter.swift */; };
 		5E8A79D9293EDB6F00C328A2 /* ProbeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A79D8293EDB6F00C328A2 /* ProbeViewModel.swift */; };
+		5E52805F2936EE7F003BE095 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 5E52805E2936EE7F003BE095 /* CodableCSV */; };
+		5E5280612936EE99003BE095 /* GraphSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280602936EE99003BE095 /* GraphSample.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,7 @@
 		5E8A79D2293EB09B00C328A2 /* DeviceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatusView.swift; sourceTree = "<group>"; };
 		5E8A79D6293ED54F00C328A2 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		5E8A79D8293EDB6F00C328A2 /* ProbeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProbeViewModel.swift; sourceTree = "<group>"; };
+		5E5280602936EE99003BE095 /* GraphSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E52805F2936EE7F003BE095 /* CodableCSV in Frameworks */,
+				5E2272AB29324D9500BC7ED0 /* ServiceDiscovery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +206,7 @@
 				5E5280592936D109003BE095 /* Fan.swift */,
 				5E52805B2936D12E003BE095 /* Alarm.swift */,
 				5E52806929379D1C003BE095 /* Device.swift */,
+				5E5280602936EE99003BE095 /* GraphSample.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -222,6 +228,8 @@
 			);
 			name = Heatermeter;
 			packageProductDependencies = (
+				5E2272AA29324D9500BC7ED0 /* ServiceDiscovery */,
+				5E52805E2936EE7F003BE095 /* CodableCSV */,
 			);
 			productName = Heatermeter;
 			productReference = 5E22727C29324D6200BC7ED0 /* Heatermeter.app */;
@@ -296,6 +304,8 @@
 			);
 			mainGroup = 5E22727329324D6200BC7ED0;
 			packageReferences = (
+				5E2272A929324D9500BC7ED0 /* XCRemoteSwiftPackageReference "swift-service-discovery" */,
+				5E52805D2936EE7F003BE095 /* XCRemoteSwiftPackageReference "CodableCSV" */,
 			);
 			productRefGroup = 5E22727D29324D6200BC7ED0 /* Products */;
 			projectDirPath = "";
@@ -353,6 +363,7 @@
 				5E14BD4F293D09A7002000AC /* HeaterMeterService.swift in Sources */,
 				5E52806829379D10003BE095 /* DeviceDiscoveryViewModel.swift in Sources */,
 				5E14BD55293D4A9E002000AC /* LocalNetwork.swift in Sources */,
+				5E5280612936EE99003BE095 /* GraphSample.swift in Sources */,
 				5E5280582936D0F9003BE095 /* Temp.swift in Sources */,
 				5E528075293BE76B003BE095 /* DNSServiceBrowser.swift in Sources */,
 				5E528077293BF0C5003BE095 /* DeviceDiscoveryView.swift in Sources */,
@@ -685,6 +696,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5E2272A929324D9500BC7ED0 /* XCRemoteSwiftPackageReference "swift-service-discovery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-service-discovery";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		5E52805D2936EE7F003BE095 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5E2272AA29324D9500BC7ED0 /* ServiceDiscovery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E2272A929324D9500BC7ED0 /* XCRemoteSwiftPackageReference "swift-service-discovery" */;
+			productName = ServiceDiscovery;
+		};
+		5E52805E2936EE7F003BE095 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E52805D2936EE7F003BE095 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5E22727429324D6200BC7ED0 /* Project object */;
 }
