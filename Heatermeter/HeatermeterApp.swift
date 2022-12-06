@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CodableCSV
 
 @main
 struct HeatermeterApp: App {
