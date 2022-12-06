@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Fan: Codable {
+struct Fan: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case pidOutputPercentage = "c"
         case averageOutputPercentage = "a"
@@ -17,4 +17,8 @@ struct Fan: Codable {
     let pidOutputPercentage: Int
     let averageOutputPercentage: Int
     let outputPercentage: Int
+    
+    static let none: Fan = Fan(pidOutputPercentage: 0,
+                               averageOutputPercentage: 0,
+                               outputPercentage: 0)
 }

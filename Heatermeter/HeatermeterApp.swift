@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
-import CodableCSV
 
 @main
 struct HeatermeterApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                DeviceDiscoveryView(viewModel: DeviceDiscoveryViewModel())
+            }
         }
+    }
+    
+    init() {
     }
 }

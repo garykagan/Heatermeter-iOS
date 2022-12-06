@@ -41,7 +41,7 @@ import Foundation
 //temps[X].rf.s    1    Assigned RF node signal strength 0-3. The RF object is not present if the probe is not of type "RF"
 //temps[X].rf.b    0    Assigned RF node battery low (0=OK, 1=Low). The RF object is not present if the probe is not of type "RF"
 
-struct CurrentStatus: Codable {
+struct CurrentStatus: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case setPoint = "set"
         case lidOpenTimer = "lid"
@@ -53,4 +53,9 @@ struct CurrentStatus: Codable {
     let lidOpenTimer: Int
     let fan: Fan
     let temps: [Temp]
+    
+    static let none: CurrentStatus = CurrentStatus(setPoint: 0.0,
+                                                   lidOpenTimer: 0,
+                                                   fan: .none,
+                                                   temps: [])
 }
