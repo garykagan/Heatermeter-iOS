@@ -67,7 +67,7 @@ enum NumberFormatter {
             return fallback
         }
         
-        return "\(number)\(suffix)"
+        return String(format: "%.2f\(suffix)", number)
     }
     
     static func suffix(_ number: Int?, allowNegative: Bool, suffix: String, fallback: String) -> String {

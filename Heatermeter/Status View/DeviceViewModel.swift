@@ -6,18 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol DeviceViewModel: ObservableObject {
-    var device: Device { get }
+    var device: AuthedDevice { get }
     var status: CurrentStatus { get }
 }
 
 class DeviceViewModelImpl: DeviceViewModel {
-    let device: Device
+    let device: AuthedDevice
     let service: HeaterMeterService
     @Published var status: CurrentStatus = .none
     
-    init(device: Device) {
+    init(device: AuthedDevice) {
         self.device = device
         self.service = HeaterMeterService(device: device)
         fetchStatus()
@@ -37,10 +38,10 @@ class DeviceViewModelImpl: DeviceViewModel {
 }
 
 class MockDeviceViewModel: DeviceViewModel {
-    let device: Device
+    let device: AuthedDevice
     let status: CurrentStatus
     
-    init(device: Device, status: CurrentStatus) {
+    init(device: AuthedDevice, status: CurrentStatus) {
         self.device = device
         self.status = status
     }

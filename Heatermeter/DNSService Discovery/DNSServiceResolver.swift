@@ -10,7 +10,7 @@ import dnssd
 import Combine
 
 class DNSServiceResolver {
-    public let devicePublisher = PassthroughSubject<Device, Never>()
+    public let devicePublisher = PassthroughSubject<DiscoveredDevice, Never>()
     private var serviceRef: DNSServiceRef? = nil
     
     func resolve(service: DNSService) {
@@ -55,10 +55,10 @@ class DNSServiceResolver {
         }
     }
     
-    private func createDevice(fullName: String, host: String, port: UInt16) -> Device {
-        return Device(name: fullName,
-                      host: host,
-                      port: port)
+    private func createDevice(fullName: String, host: String, port: UInt16) -> DiscoveredDevice {
+        return DiscoveredDevice(name: fullName,
+                                host: host,
+                                port: port)
     }
     
     func stop() {

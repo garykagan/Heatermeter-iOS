@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class DNSServiceDiscovery: ObservableObject {
-    @Published var discoveredDevices = Set<Device>()
+    @Published var discoveredDevices = Set<DiscoveredDevice>()
     let service: DNSService
     let browser: DNSServiceBrowser = DNSServiceBrowser()
     let resolver: DNSServiceResolver = DNSServiceResolver()

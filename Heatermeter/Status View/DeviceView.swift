@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct DeviceStatusView: View {
-    @State var viewModel: any DeviceViewModel
+struct DeviceView<ViewModel: DeviceViewModel>: View {
+    @StateObject var viewModel: ViewModel
     
     var body: some View {
         ScrollView {
@@ -22,6 +22,9 @@ struct DeviceStatusView: View {
                             .font(.title2)
                             .foregroundColor(.yellow)
                             .bold()
+                            .task {
+                                print("===GK===", viewModel.status)
+                            }
                     }
                     HStack {
                         VStack {
@@ -32,8 +35,7 @@ struct DeviceStatusView: View {
                         VStack {
                             Text("Avg")
                             Text(
-                                viewModel
-                                .status
+                                viewModel.status
                                 .fan
                                 .averageOutputPercentage
                                 .degrees()
@@ -54,14 +56,13 @@ struct DeviceStatusView: View {
                 .cornerRadius(10)
                 .padding(5)
                 
-                if let status = viewModel.status {
-                    ForEach(status.temps) { temp in
-                        ProbeView(viewModel: ProbeViewModel(thermometer: temp))
-                            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
-                    }
+                ForEach(viewModel.status.temps) { temp in
+                    ProbeView(viewModel: ProbeViewModel(thermometer: temp))
+                        .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                 }
             }
         }
+        .navigationBarItems(trailing: NavigationLink("Graph", value: NavigationDestination.graph(viewModel.device)))
     }
 }
 
@@ -116,12 +117,11 @@ struct DeviceStatusView_Previews: PreviewProvider {
 """.data(using: .utf8)!
     
     static var previews: some View {
-        let device = Device(name: "device",
-                            host: "device.local",
-                            port: 1)
+        let device = AuthedDevice(host: "heatermeter.local",
+                                  username: "", password: "")
         let status = try! JSONDecoder().decode(CurrentStatus.self, from: json)
         let viewModel = MockDeviceViewModel(device: device,
                                             status: status)
-        DeviceStatusView(viewModel: viewModel)
+        DeviceView(viewModel: viewModel)
     }
 }

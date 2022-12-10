@@ -1,5 +1,5 @@
 //
-//  Device.swift
+//  DiscoveredDevice.swift
 //  Heatermeter
 //
 //  Created by Gary Kagan on 11/30/22.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Device: Codable, Hashable, Identifiable, Comparable {
-    static func < (lhs: Device, rhs: Device) -> Bool {
+struct DiscoveredDevice: Codable, Hashable, Identifiable, Comparable {
+    static func < (lhs: DiscoveredDevice, rhs: DiscoveredDevice) -> Bool {
         lhs.id < rhs.id
     }
     

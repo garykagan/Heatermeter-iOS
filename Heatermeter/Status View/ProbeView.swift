@@ -60,6 +60,7 @@ struct ProbeView: View {
             .foregroundColor(.white)
             .cornerRadius(10)
         }
+        .shadow(radius: 3.0)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

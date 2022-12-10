@@ -9,11 +9,10 @@ import SwiftUI
 
 @main
 struct HeatermeterApp: App {
+    let viewModel = DeviceSelectionViewModel()
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                DeviceDiscoveryView(viewModel: DeviceDiscoveryViewModel())
-            }
+            DeviceSelectionView(viewModel: viewModel)
         }
     }
     
