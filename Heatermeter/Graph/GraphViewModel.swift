@@ -7,6 +7,8 @@
 
 import Foundation
 import CodableCSV
+import Charts
+import SwiftUI
 
 protocol GraphViewModel: ObservableObject {
     var samples: [GraphSample]? { get }
@@ -15,8 +17,14 @@ protocol GraphViewModel: ObservableObject {
     var limits: (min: Double, max: Double) { get }
     var temperatureSources: TemperatureSource { get set }
     
+    var comparisonRange: (Date, Date)? { get }
+    var showingSettings: Bool { get set }
+    
     func nearestSample(at date: Date, in samples: [GraphSample]) -> GraphSample?
     func stride() -> Double
+    func dragged(start: Date, end: Date)
+    func dragEnded()
+    func settingsTapped()
 }
 
 enum GraphWindow: Hashable {
@@ -42,7 +50,10 @@ class GraphViewModelImpl: GraphViewModel {
     @Published var samples: [GraphSample]? = nil
     @Published var window: GraphWindow = .hour(1)
     @Published var limits: (min: Double, max: Double) = (min: 0, max: 0)
-    @Published var temperatureSources: TemperatureSource = [.probe1, .probe2]
+    @Published var temperatureSources: TemperatureSource = .all
+    @Published var comparisonRange: (Date, Date)? = nil
+    @Published var showingSettings: Bool = false
+    
     var filteredSamples: [GraphSample]? {
         let filtered: [GraphSample]?
         guard case let .hour(windowHours) = window else {
@@ -107,6 +118,18 @@ class GraphViewModelImpl: GraphViewModel {
         }
         
         return probes
+    }
+    
+    func dragged(start: Date, end: Date) {
+        comparisonRange = (start, end)
+    }
+    
+    func dragEnded() {
+        comparisonRange = nil
+    }
+    
+    func settingsTapped() {
+        showingSettings = true
     }
     
     private func fetchGraph() {

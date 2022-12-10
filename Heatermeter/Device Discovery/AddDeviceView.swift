@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct AddDeviceView: View {
-    @ObservedObject var viewModel: AddDeviceViewModel
+    @StateObject var viewModel: AddDeviceViewModel
     
     var body: some View {
         NavigationStack {

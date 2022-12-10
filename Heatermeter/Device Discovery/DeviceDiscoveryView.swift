@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 struct DeviceDiscoveryView: View {
-    @ObservedObject var viewModel: DeviceDiscoveryViewModel
+    @StateObject var viewModel: DeviceDiscoveryViewModel
     
     var body: some View {
         NavigationStack {

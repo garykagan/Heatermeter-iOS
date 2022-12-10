@@ -10,21 +10,19 @@ import SwiftUI
 import Charts
 
 struct GraphView<ViewModel: GraphViewModel>: View {
-    @ObservedObject var viewModel: ViewModel
-    @State var range: (Date, Date)?
-    
-    @State var showingSettings: Bool = false
+    @StateObject var viewModel: ViewModel
     
     var body: some View {
         if let samples = viewModel.filteredSamples {
             WindowPickerView(viewModel: viewModel)
+                .padding(5)
             
             Chart {
                 ForEach(samples) { sample in
                     TemperatureSampleView(sample: sample, sources: viewModel.temperatureSources)
                 }
                 
-                if let (start, end) = range {
+                if let (start, end) = viewModel.comparisonRange {
                     RectangleMark(
                         xStart: .value("Selection Start", start),
                         xEnd: .value("Selection End", end)
@@ -44,7 +42,7 @@ struct GraphView<ViewModel: GraphViewModel>: View {
                 }
             }
             .chartOverlay { proxy in
-                if let (start, end) = range,
+                if let (start, end) = viewModel.comparisonRange,
                    let startSample = viewModel.nearestSample(at: start, in: samples),
                    let endSample = viewModel.nearestSample(at: end, in: samples) {
                     VStack {
@@ -92,23 +90,24 @@ struct GraphView<ViewModel: GraphViewModel>: View {
                                 // Find the date values at the x-coordinates.
                                 if let dateStart: Date = proxy.value(atX: xStart),
                                    let dateCurrent: Date = proxy.value(atX: xCurrent) {
-                                    range = (dateStart, dateCurrent)
+                                    viewModel.dragged(start: dateStart, end: dateCurrent)
                                 }
                             }
-                            .onEnded { _ in range = nil } // Clear the state on gesture end.
+                            .onEnded { _ in viewModel.dragEnded() } // Clear the state on gesture end.
                         )
                 }
             }
             .navigationTitle("Graph")
             .navigationBarItems(trailing: Button(action: {
-                showingSettings = true
+                viewModel.settingsTapped()
             }, label: {
                 Image(systemName: "gearshape")
             })
-                .popover(isPresented: $showingSettings) {
+                .popover(isPresented: $viewModel.showingSettings) {
                     GraphSettingsView(viewModel: viewModel)
                 }
             )
+            .padding(EdgeInsets(top: 0, leading: 5, bottom: 10, trailing: 5))
         } else {
             Text("Loading...")
         }

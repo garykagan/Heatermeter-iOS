@@ -9,13 +9,16 @@ import Foundation
 import SwiftUI
 
 struct DeviceSelectionView: View {
-    @ObservedObject var viewModel: DeviceSelectionViewModel
+    @StateObject var viewModel: DeviceSelectionViewModel
     
     var body: some View {
         NavigationStack() {
-            Button("Add Device") {
+            Button {
                 viewModel.addDeviceTapped()
+            } label: {
+                Text("Add Device")
             }
+
             List() {
                 ForEach(viewModel.recentDevices) { device in
                     NavigationLink(device.host,
@@ -37,7 +40,7 @@ struct DeviceSelectionView: View {
             .navigationBarItems(trailing: Button(action: {
                 viewModel.discoverDevicesTapped()
             }, label: {
-                Text("Discover")
+                Image(systemName: "badge.plus.radiowaves.right")
             })
                 .popover(isPresented: $viewModel.deviceDiscoveryPresented, content: {
                     DeviceDiscoveryView(viewModel: DeviceDiscoveryViewModel(presented: $viewModel.deviceDiscoveryPresented, selectedDevice: $viewModel.foundDevice))

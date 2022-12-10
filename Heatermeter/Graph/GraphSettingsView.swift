@@ -9,19 +9,19 @@ import Foundation
 import SwiftUI
 
 struct GraphSettingsView<ViewModel: GraphViewModel>: View {
-    @ObservedObject var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
         if horizontalSizeClass == .regular {
-            List {
-                items
-            }
-        } else {
             VStack {
                 items
             }
             .padding()
+        } else {
+            List {
+                items
+            }
         }
     }
     

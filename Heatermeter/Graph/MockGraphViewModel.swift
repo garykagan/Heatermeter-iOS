@@ -9,6 +9,16 @@ import Foundation
 import CodableCSV
 
 class MockGraphViewModel: GraphViewModel {
+    func dragEnded() {}
+    
+    func settingsTapped() {}
+    
+    var comparisonRange: (Date, Date)? = nil
+    
+    var showingSettings: Bool = false
+    
+    func dragged(start: Date, end: Date) {}
+    
     var temperatureSources: TemperatureSource = [.probe0, .probe2]
     
     var window: GraphWindow = .all

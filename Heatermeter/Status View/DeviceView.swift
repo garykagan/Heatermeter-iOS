@@ -12,57 +12,65 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            if viewModel.status == .none {
+                Text("Loading...")
+            } else {
                 VStack {
-                    HStack {
-                        Text("Set Point")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                        Text(viewModel.status.setPoint.degrees())
-                            .font(.title2)
-                            .foregroundColor(.yellow)
-                            .bold()
-                            .task {
-                                print("===GK===", viewModel.status)
+                    VStack {
+                        HStack {
+                            Text("Set Point")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                            Text(viewModel.status.setPoint.degrees())
+                                .font(.title2)
+                                .foregroundColor(.yellow)
+                                .bold()
+                                .task {
+                                    print("===GK===", viewModel.status)
+                                }
+                        }
+                        HStack {
+                            VStack {
+                                Text("Fan")
+                                Text(viewModel.status.fan.outputPercentage.percent())
                             }
-                    }
-                    HStack {
-                        VStack {
-                            Text("Fan")
-                            Text(viewModel.status.fan.outputPercentage.percent())
+                            .foregroundColor(.indigo)
+                            VStack {
+                                Text("Avg")
+                                Text(
+                                    viewModel.status
+                                        .fan
+                                        .averageOutputPercentage
+                                        .degrees()
+                                )
+                            }
+                            .foregroundColor(.purple)
                         }
-                        .foregroundColor(.indigo)
-                        VStack {
-                            Text("Avg")
-                            Text(
-                                viewModel.status
-                                .fan
-                                .averageOutputPercentage
-                                .degrees()
-                            )
-                        }
-                        .foregroundColor(.purple)
+                        .bold()
+                        .padding()
+                        .frame(maxHeight: 60)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(.white, lineWidth: 3)
+                        )
                     }
-                    .bold()
-                    .padding()
-                    .frame(maxHeight: 60)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(.white, lineWidth: 3)
-                    )
-                }
-                .frame(maxWidth: .infinity, minHeight: 120)
-                .background(Color(uiColor: .lightGray))
-                .cornerRadius(10)
-                .padding(5)
-                
-                ForEach(viewModel.status.temps) { temp in
-                    ProbeView(viewModel: ProbeViewModel(thermometer: temp))
-                        .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                    .frame(maxWidth: .infinity, minHeight: 120)
+                    .background(Color(uiColor: .lightGray))
+                    .cornerRadius(10)
+                    .padding(5)
+                    
+                    ForEach(viewModel.status.temps) { temp in
+                        ProbeView(viewModel: ProbeViewModel(thermometer: temp))
+                            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                    }
                 }
             }
         }
-        .navigationBarItems(trailing: NavigationLink("Graph", value: NavigationDestination.graph(viewModel.device)))
+        .navigationBarItems(trailing: NavigationLink(value: NavigationDestination.graph(viewModel.device), label: {
+            Image(systemName: "waveform.path.ecg")
+        }))
+        .navigationTitle(viewModel.device.host)
+            
     }
 }
 
