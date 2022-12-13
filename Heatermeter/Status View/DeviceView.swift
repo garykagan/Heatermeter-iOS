@@ -126,7 +126,7 @@ struct DeviceStatusView_Previews: PreviewProvider {
     
     static var previews: some View {
         let device = AuthedDevice(host: "heatermeter.local",
-                                  username: "", password: "")
+                                  apiKey: "")
         let status = try! JSONDecoder().decode(CurrentStatus.self, from: json)
         let viewModel = MockDeviceViewModel(device: device,
                                             status: status)

@@ -34,8 +34,7 @@ class AddDeviceViewModel: ObservableObject {
     
     func createDevice() {
         createdDevice = AuthedDevice(host: host,
-                                     username: username,
-                                     password: password)
+                                     apiKey: "")
         dismiss()
     }
     
