@@ -23,6 +23,15 @@ struct ConfigRequestModel {
     let probe3Name: String?
     let setPoint: Int?
     let alarms: AlarmSetting?
+    
+    init(probe0Name: String? = nil, probe1Name: String? = nil, probe2Name: String? = nil, probe3Name: String? = nil, setPoint: Int? = nil, alarms: AlarmSetting? = nil) {
+        self.probe0Name = probe0Name
+        self.probe1Name = probe1Name
+        self.probe2Name = probe2Name
+        self.probe3Name = probe3Name
+        self.setPoint = setPoint
+        self.alarms = alarms
+    }
 }
 
 struct AlarmSetting {

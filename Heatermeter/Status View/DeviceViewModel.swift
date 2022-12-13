@@ -46,7 +46,7 @@ class DeviceViewModel: ObservableObject {
     
     func probeViewModel(probe: ProbeIndex) -> ProbeViewModel {
         guard let probeViewModel = probeViewModels[probe] else {
-            let viewModel = ProbeViewModel(probe: probe, status: status)
+            let viewModel = ProbeViewModel(probe: probe, status: status, service: self.service)
             probeViewModels[probe] = viewModel
             return viewModel
         }

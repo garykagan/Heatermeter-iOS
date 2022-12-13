@@ -42,6 +42,7 @@
 		5E528073293AB7D5003BE095 /* DNSServiceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528072293AB7D5003BE095 /* DNSServiceResolver.swift */; };
 		5E528075293BE76B003BE095 /* DNSServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528074293BE76B003BE095 /* DNSServiceBrowser.swift */; };
 		5E528077293BF0C5003BE095 /* DeviceDiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528076293BF0C5003BE095 /* DeviceDiscoveryView.swift */; };
+		5E5DD6F52948C181001CB005 /* ProbeSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5DD6F42948C181001CB005 /* ProbeSettingsViewModel.swift */; };
 		5E74FF7029481E8A0015F7AC /* DiscoveredDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF6C29481E8A0015F7AC /* DiscoveredDevice.swift */; };
 		5E74FF7129481E8A0015F7AC /* CredentialedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF6D29481E8A0015F7AC /* CredentialedDevice.swift */; };
 		5E74FF7229481E8A0015F7AC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF6E29481E8A0015F7AC /* Device.swift */; };
@@ -115,6 +116,7 @@
 		5E528072293AB7D5003BE095 /* DNSServiceResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSServiceResolver.swift; sourceTree = "<group>"; };
 		5E528074293BE76B003BE095 /* DNSServiceBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSServiceBrowser.swift; sourceTree = "<group>"; };
 		5E528076293BF0C5003BE095 /* DeviceDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryView.swift; sourceTree = "<group>"; };
+		5E5DD6F42948C181001CB005 /* ProbeSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProbeSettingsViewModel.swift; sourceTree = "<group>"; };
 		5E74FF6C29481E8A0015F7AC /* DiscoveredDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveredDevice.swift; sourceTree = "<group>"; };
 		5E74FF6D29481E8A0015F7AC /* CredentialedDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialedDevice.swift; sourceTree = "<group>"; };
 		5E74FF6E29481E8A0015F7AC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				5E74FF76294835E40015F7AC /* ProbeSettingsView.swift */,
 				5E74FF7A294835ED0015F7AC /* DeviceSettingsView.swift */,
 				5E8A79D8293EDB6F00C328A2 /* ProbeViewModel.swift */,
+				5E5DD6F42948C181001CB005 /* ProbeSettingsViewModel.swift */,
 				5E14BD52293D0EEB002000AC /* DeviceViewModel.swift */,
 			);
 			path = "Status View";
@@ -466,6 +469,7 @@
 				5E74FF7B294835EE0015F7AC /* DeviceSettingsView.swift in Sources */,
 				5E14BD4F293D09A7002000AC /* HeaterMeterService.swift in Sources */,
 				5E2F386029413A75001FBF68 /* MockGraphViewModel.swift in Sources */,
+				5E5DD6F52948C181001CB005 /* ProbeSettingsViewModel.swift in Sources */,
 				5E52806829379D10003BE095 /* DeviceDiscoveryViewModel.swift in Sources */,
 				5E74FF7029481E8A0015F7AC /* DiscoveredDevice.swift in Sources */,
 				5E2F38662943E377001FBF68 /* AddDeviceView.swift in Sources */,

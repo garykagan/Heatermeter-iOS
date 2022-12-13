@@ -9,42 +9,46 @@ import Foundation
 import SwiftUI
 
 struct ProbeSettingsView: View {
-    @StateObject var viewModel: ProbeViewModel
+    @StateObject var viewModel: ProbeSettingsViewModel
     var body: some View {
-        Form {
-            Section {
-                TextField("Name", text: $viewModel.name)
-                    .foregroundColor(.black)
-            }
-            
-            Section {
-                HStack {
-                    Spacer()
-                    DigitStepper(value: $viewModel.lowValue)
-                        .foregroundColor(.blue)
-                    Spacer(minLength: 10)
-                    DigitStepper(value: $viewModel.highValue)
-                        .foregroundColor(.orange)
-                    Spacer()
+        NavigationStack {
+            Form {
+                Section {
+                    TextField("Name", text: $viewModel.name)
+                        .foregroundColor(.black)
+                }
+                
+                Section {
+                    HStack {
+                        Spacer()
+                        DigitStepper(value: $viewModel.lowValue)
+                            .foregroundColor(.blue)
+                        Spacer(minLength: 10)
+                        DigitStepper(value: $viewModel.highValue)
+                            .foregroundColor(.orange)
+                        Spacer()
+                    }
                 }
             }
-//            
-//            VStack {
-//                VStack {
-//                    Stepper("Low Alarm \(viewModel.currentLow)", value: $viewModel.currentLow) { changed in
-////                        viewModel.alarmUpdated()
-//                    }
-//                }
-//                .foregroundColor(.blue)
-//                
-//                VStack {
-//                    Stepper("High Alarm \(viewModel.currentHigh)", value: $viewModel.currentHigh) { changed in
-////                        viewModel.alarmUpdated()
-//                    }
-//                }
-//                .foregroundColor(.orange)
-//            }
+            .navigationTitle("Probe \(viewModel.probe.rawValue) Settings")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        viewModel.saveButtonTapped()
+                    } label: {
+                        if viewModel.saving {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                            Spacer()
+                                .frame(minWidth: 5, maxWidth: 5)
+                            Text("Saving")
+                        } else {
+                            Text("Save")
+                        }
+                    }
+                    .disabled(viewModel.saving)
+                }
+            }
         }
-        Text("")
     }
 }

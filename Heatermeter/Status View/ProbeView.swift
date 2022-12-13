@@ -64,7 +64,7 @@ struct ProbeView: View {
             viewModel.settingsPresented = true
         }
         .sheet(isPresented: $viewModel.settingsPresented) {
-            ProbeSettingsView(viewModel: viewModel)
+            ProbeSettingsView(viewModel: viewModel.probeSettingsViewModel())
         }
         .shadow(radius: 3.0)
         .frame(maxWidth: .infinity, alignment: .leading)

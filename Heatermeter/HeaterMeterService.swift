@@ -112,7 +112,7 @@ class HeaterMeterService {
         return .failed(httpResponse.statusCode)
     }
     
-    public func set(config: ConfigRequestModel) {
+    public func set(config: ConfigRequestModel) async {
         var configParams: [ConfigRequestFields: String] = [:]
         
         if let setPoint = config.setPoint {
@@ -147,9 +147,7 @@ class HeaterMeterService {
                               method: .post,
                               queryParameters: queryParams)
 
-        Task {
-            try? await Self.perform(request: request)
-        }
+        _ = try? await Self.perform(request: request)
     }
     
     private static func perform(request: Request) async throws -> (data: Data, response: URLResponse){

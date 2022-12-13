@@ -21,18 +21,27 @@ class ProbeViewModel: ObservableObject {
     }
     
     let probe: ProbeIndex
+    let service: HeaterMeterService
     @Published var status: CurrentStatus
     @Published var settingsPresented: Bool = false
-    @Published var name: String = ""
-    @Published var lowValue: Int = 0
-    @Published var highValue: Int = 0
     
-    init(probe: ProbeIndex, status: CurrentStatus) {
+    private var probeSettingsVm: ProbeSettingsViewModel? = nil
+    
+    init(probe: ProbeIndex, status: CurrentStatus, service: HeaterMeterService) {
         self.status = status
         self.probe = probe
+        self.service = service
+    }
+    
+    func probeSettingsViewModel() -> ProbeSettingsViewModel {
+        guard let probeSettingsVm else {
+            let viewModel = ProbeSettingsViewModel(probe: probe,
+                                                   service: service,
+                                                   status: status)
+            self.probeSettingsVm = viewModel
+            return viewModel
+        }
         
-        self.name = thermometer.name
-        self.lowValue = thermometer.alarm.low
-        self.highValue = thermometer.alarm.high
+        return probeSettingsVm
     }
 }

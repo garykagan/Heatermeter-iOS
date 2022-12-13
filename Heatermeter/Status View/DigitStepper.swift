@@ -11,7 +11,7 @@ import Combine
 
 class DigitStepperViewModel: ObservableObject {
     @Binding var value: Int
-    @Published var enabled: Bool {
+    var enabled: Bool {
         didSet {
             if !enabled {
                 self.lastKnownValue = self.value
@@ -19,9 +19,11 @@ class DigitStepperViewModel: ObservableObject {
             } else {
                 self.value = self.lastKnownValue
             }
+            print(enabled)
         }
     }
-    @Published var lastKnownValue: Int
+    
+    @Published var lastKnownValue: Int = 0
     
     var enabledCancellable: AnyCancellable? = nil
     
@@ -30,6 +32,7 @@ class DigitStepperViewModel: ObservableObject {
         
         self.enabled = value.wrappedValue > -1
         self.lastKnownValue = value.wrappedValue
+        
     }
 }
 
@@ -115,7 +118,7 @@ struct DigitStepper: View {
     }
     
     func displayValue(digit: Digit) -> String {
-        if viewModel.enabled {
+        if viewModel.value > -1 {
             return "\(digit.value)"
         } else {
             return "-"
