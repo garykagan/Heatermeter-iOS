@@ -25,9 +25,6 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                                 .font(.title2)
                                 .foregroundColor(.yellow)
                                 .bold()
-                                .task {
-                                    print("===GK===", viewModel.status)
-                                }
                         }
                         HStack {
                             VStack {
@@ -59,9 +56,12 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                     .cornerRadius(10)
                     .padding(5)
                     
-                    ForEach(viewModel.status.temps) { temp in
-                        ProbeView(viewModel: ProbeViewModel(thermometer: temp))
-                            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                    ForEach(Array(viewModel.status.temps.enumerated()), id: \.offset) { index, temp in
+                        if let probe = ProbeIndex(rawValue: index) {
+                            let probeViewModel = viewModel.probeViewModel(probe: probe)
+                            ProbeView(viewModel: probeViewModel)
+                                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                        }
                     }
                 }
             }
@@ -71,65 +71,5 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
         }))
         .navigationTitle(viewModel.device.host)
             
-    }
-}
-
-
-struct DeviceStatusView_Previews: PreviewProvider {
-    static let json = """
-{
-    "time": 1670278367,
-    "set": 230,
-    "lid": 0,
-    "fan": {
-        "c": 100,
-        "a": 99,
-        "f": 100,
-        "s": 100
-    },
-    "adc": [0, 1, 0, 1, 0, 0],
-    "temps": [{
-        "n": "Pit",
-        "c": 73.8,
-        "a": {
-            "l": -1,
-            "h": -1,
-            "r": null
-        }
-    }, {
-        "n": "Pit",
-        "c": 73.8,
-        "a": {
-            "l": 200,
-            "h": 300,
-            "r": null
-        }
-    }, {
-        "n": "Brisket",
-        "c": 73.0,
-        "a": {
-            "l": -1,
-            "h": -1,
-            "r": null
-        }
-    }, {
-        "n": "Probe 3",
-        "c": null,
-        "a": {
-            "l": -1,
-            "h": -1,
-            "r": null
-        }
-    }]
-}
-""".data(using: .utf8)!
-    
-    static var previews: some View {
-        let device = AuthedDevice(host: "heatermeter.local",
-                                  apiKey: "")
-        let status = try! JSONDecoder().decode(CurrentStatus.self, from: json)
-        let viewModel = MockDeviceViewModel(device: device,
-                                            status: status)
-        DeviceView(viewModel: viewModel)
     }
 }

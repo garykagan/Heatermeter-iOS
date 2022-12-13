@@ -47,6 +47,9 @@
 		5E74FF7229481E8A0015F7AC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF6E29481E8A0015F7AC /* Device.swift */; };
 		5E74FF7329481E8A0015F7AC /* AuthedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF6F29481E8A0015F7AC /* AuthedDevice.swift */; };
 		5E74FF75294822550015F7AC /* ConfigRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF74294822550015F7AC /* ConfigRequestModel.swift */; };
+		5E74FF77294835E40015F7AC /* ProbeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF76294835E40015F7AC /* ProbeSettingsView.swift */; };
+		5E74FF79294835E90015F7AC /* DigitStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF78294835E90015F7AC /* DigitStepper.swift */; };
+		5E74FF7B294835EE0015F7AC /* DeviceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF7A294835ED0015F7AC /* DeviceSettingsView.swift */; };
 		5E8A79D1293E9E2000C328A2 /* ProbeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A79D0293E9E2000C328A2 /* ProbeView.swift */; };
 		5E8A79D3293EB09B00C328A2 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A79D2293EB09B00C328A2 /* DeviceView.swift */; };
 		5E8A79D7293ED54F00C328A2 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A79D6293ED54F00C328A2 /* NumberFormatter.swift */; };
@@ -117,6 +120,9 @@
 		5E74FF6E29481E8A0015F7AC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		5E74FF6F29481E8A0015F7AC /* AuthedDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthedDevice.swift; sourceTree = "<group>"; };
 		5E74FF74294822550015F7AC /* ConfigRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigRequestModel.swift; sourceTree = "<group>"; };
+		5E74FF76294835E40015F7AC /* ProbeSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbeSettingsView.swift; sourceTree = "<group>"; };
+		5E74FF78294835E90015F7AC /* DigitStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitStepper.swift; sourceTree = "<group>"; };
+		5E74FF7A294835ED0015F7AC /* DeviceSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSettingsView.swift; sourceTree = "<group>"; };
 		5E8A79D0293E9E2000C328A2 /* ProbeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProbeView.swift; sourceTree = "<group>"; };
 		5E8A79D2293EB09B00C328A2 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		5E8A79D6293ED54F00C328A2 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
@@ -237,7 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				5E8A79D2293EB09B00C328A2 /* DeviceView.swift */,
+				5E74FF78294835E90015F7AC /* DigitStepper.swift */,
 				5E8A79D0293E9E2000C328A2 /* ProbeView.swift */,
+				5E74FF76294835E40015F7AC /* ProbeSettingsView.swift */,
+				5E74FF7A294835ED0015F7AC /* DeviceSettingsView.swift */,
 				5E8A79D8293EDB6F00C328A2 /* ProbeViewModel.swift */,
 				5E14BD52293D0EEB002000AC /* DeviceViewModel.swift */,
 			);
@@ -452,7 +461,9 @@
 				5E2F381629404038001FBF68 /* TemperatureSampleView.swift in Sources */,
 				5E8A79D1293E9E2000C328A2 /* ProbeView.swift in Sources */,
 				5E52805A2936D109003BE095 /* Fan.swift in Sources */,
+				5E74FF79294835E90015F7AC /* DigitStepper.swift in Sources */,
 				5E22728029324D6200BC7ED0 /* HeatermeterApp.swift in Sources */,
+				5E74FF7B294835EE0015F7AC /* DeviceSettingsView.swift in Sources */,
 				5E14BD4F293D09A7002000AC /* HeaterMeterService.swift in Sources */,
 				5E2F386029413A75001FBF68 /* MockGraphViewModel.swift in Sources */,
 				5E52806829379D10003BE095 /* DeviceDiscoveryViewModel.swift in Sources */,
@@ -470,6 +481,7 @@
 				5E52805C2936D12E003BE095 /* Alarm.swift in Sources */,
 				5E528071293A71F9003BE095 /* DNSService.swift in Sources */,
 				5E2F386E2943F709001FBF68 /* AddDeviceViewModel.swift in Sources */,
+				5E74FF77294835E40015F7AC /* ProbeSettingsView.swift in Sources */,
 				5E2F381A294040AF001FBF68 /* WindowPickerView.swift in Sources */,
 				5E8A79DF293EDD5D00C328A2 /* GraphView.swift in Sources */,
 				5E74FF7329481E8A0015F7AC /* AuthedDevice.swift in Sources */,

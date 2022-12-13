@@ -42,4 +42,12 @@ struct Temp: Codable, Identifiable, Equatable {
     let degreesPerHour: Double?
     let alarm: Alarm
     let rf: RF?
+    
+    init(name: String, currentTemp: Double? = nil, degreesPerHour: Double? = nil, alarm: Alarm, rf: RF? = nil) {
+        self.name = name
+        self.currentTemp = currentTemp
+        self.degreesPerHour = degreesPerHour
+        self.alarm = alarm
+        self.rf = rf
+    }
 }

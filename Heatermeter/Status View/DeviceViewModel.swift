@@ -7,21 +7,29 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
-protocol DeviceViewModel: ObservableObject {
-    var device: AuthedDevice { get }
-    var status: CurrentStatus { get }
-}
-
-class DeviceViewModelImpl: DeviceViewModel {
+class DeviceViewModel: ObservableObject {
     let device: AuthedDevice
     let service: HeaterMeterService
     @Published var status: CurrentStatus = .none
+    
+    private var probeViewModels: [ProbeIndex: ProbeViewModel] = [:]
+    
+    private var statusUpdateCancellable: AnyCancellable? = nil
     
     init(device: AuthedDevice) {
         self.device = device
         self.service = HeaterMeterService(device: device)
         fetchStatus()
+        
+        statusUpdateCancellable = $status.sink { [weak self] value in
+            guard let self else { return }
+            
+            for (_, viewModel) in self.probeViewModels {
+                viewModel.status = value
+            }
+        }
     }
     
     func fetchStatus() {
@@ -35,14 +43,21 @@ class DeviceViewModelImpl: DeviceViewModel {
             fetchStatus()
         }
     }
+    
+    func probeViewModel(probe: ProbeIndex) -> ProbeViewModel {
+        guard let probeViewModel = probeViewModels[probe] else {
+            let viewModel = ProbeViewModel(probe: probe, status: status)
+            probeViewModels[probe] = viewModel
+            return viewModel
+        }
+        
+        return probeViewModel
+    }
 }
 
-class MockDeviceViewModel: DeviceViewModel {
-    let device: AuthedDevice
-    let status: CurrentStatus
-    
-    init(device: AuthedDevice, status: CurrentStatus) {
-        self.device = device
-        self.status = status
+extension Collection {
+    /// Returns the element at the specified index if it is within bounds, otherwise nil.
+    subscript (safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }

@@ -15,7 +15,4 @@ struct HeatermeterApp: App {
             DeviceSelectionView(viewModel: viewModel)
         }
     }
-    
-    init() {
-    }
 }

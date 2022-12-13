@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ProbeView: View {
-    @State var viewModel: ProbeViewModel
+    @StateObject var viewModel: ProbeViewModel
     
     var body: some View {
         HStack {
@@ -60,20 +60,26 @@ struct ProbeView: View {
             .foregroundColor(.white)
             .cornerRadius(10)
         }
+        .onTapGesture() {
+            viewModel.settingsPresented = true
+        }
+        .sheet(isPresented: $viewModel.settingsPresented) {
+            ProbeSettingsView(viewModel: viewModel)
+        }
         .shadow(radius: 3.0)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
-struct ProbeView_Previews: PreviewProvider {
-    static var previews: some View {
-        let temp = Temp(name: "Brisket",
-                                    currentTemp: 300.50,
-                                    degreesPerHour: 10.0,
-                                    alarm: Alarm(low: 200, high: 300, ringing: nil),
-                                    rf: nil)
-        let viewModel = ProbeViewModel(thermometer: temp)
-        
-        ProbeView(viewModel: viewModel)
-    }
-}
+//struct ProbeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let temp = Temp(name: "Brisket",
+//                                    currentTemp: 300.50,
+//                                    degreesPerHour: 10.0,
+//                                    alarm: Alarm(low: 200, high: 300, ringing: nil),
+//                                    rf: nil)
+//        let viewModel = ProbeViewModel(probe: .probe0, thermometer: temp)
+//        
+//        ProbeView(viewModel: viewModel)
+//    }
+//}

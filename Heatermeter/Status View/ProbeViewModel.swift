@@ -8,10 +8,31 @@
 import Foundation
 import SwiftUI
 
+enum ProbeIndex: Int {
+    case probe0
+    case probe1
+    case probe2
+    case probe3
+}
+
 class ProbeViewModel: ObservableObject {
-    let thermometer: Temp
+    var thermometer: Temp {
+        status.temps[safe: probe.rawValue] ?? Temp(name: "", alarm: Alarm(low: 0, high: 0, ringing: nil))
+    }
     
-    init(thermometer: Temp) {
-        self.thermometer = thermometer
+    let probe: ProbeIndex
+    @Published var status: CurrentStatus
+    @Published var settingsPresented: Bool = false
+    @Published var name: String = ""
+    @Published var lowValue: Int = 0
+    @Published var highValue: Int = 0
+    
+    init(probe: ProbeIndex, status: CurrentStatus) {
+        self.status = status
+        self.probe = probe
+        
+        self.name = thermometer.name
+        self.lowValue = thermometer.alarm.low
+        self.highValue = thermometer.alarm.high
     }
 }

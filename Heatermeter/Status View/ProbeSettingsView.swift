@@ -10,29 +10,41 @@ import SwiftUI
 
 struct ProbeSettingsView: View {
     @StateObject var viewModel: ProbeViewModel
-    
     var body: some View {
         Form {
-            TextField("Name", text: $viewModel.name) { _ in
-                viewModel.nameUpdated()
+            Section {
+                TextField("Name", text: $viewModel.name)
+                    .foregroundColor(.black)
             }
-            .foregroundColor(.black)
             
-            VStack {
-                VStack {
-                    Stepper("Low Alarm \(viewModel.currentLow)", value: $viewModel.currentLow) { changed in
-                        viewModel.alarmUpdated()
-                    }
+            Section {
+                HStack {
+                    Spacer()
+                    DigitStepper(value: $viewModel.lowValue)
+                        .foregroundColor(.blue)
+                    Spacer(minLength: 10)
+                    DigitStepper(value: $viewModel.highValue)
+                        .foregroundColor(.orange)
+                    Spacer()
                 }
-                .foregroundColor(.blue)
-                
-                VStack {
-                    Stepper("High Alarm \(viewModel.currentHigh)", value: $viewModel.currentHigh) { changed in
-                        viewModel.alarmUpdated()
-                    }
-                }
-                .foregroundColor(.orange)
             }
+//            
+//            VStack {
+//                VStack {
+//                    Stepper("Low Alarm \(viewModel.currentLow)", value: $viewModel.currentLow) { changed in
+////                        viewModel.alarmUpdated()
+//                    }
+//                }
+//                .foregroundColor(.blue)
+//                
+//                VStack {
+//                    Stepper("High Alarm \(viewModel.currentHigh)", value: $viewModel.currentHigh) { changed in
+////                        viewModel.alarmUpdated()
+//                    }
+//                }
+//                .foregroundColor(.orange)
+//            }
         }
+        Text("")
     }
 }

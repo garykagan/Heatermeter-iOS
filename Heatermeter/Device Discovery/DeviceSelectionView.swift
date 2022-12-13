@@ -32,7 +32,7 @@ struct DeviceSelectionView: View {
             .navigationDestination(for: NavigationDestination.self) { destination in
                 switch destination {
                 case .status(let device):
-                    DeviceView(viewModel: DeviceViewModelImpl(device: device))
+                    DeviceView(viewModel: DeviceViewModel(device: device))
                 case .graph(let device):
                     GraphView(viewModel: GraphViewModelImpl(device: device))
                 }
