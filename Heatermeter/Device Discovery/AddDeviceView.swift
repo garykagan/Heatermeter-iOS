@@ -15,16 +15,51 @@ struct AddDeviceView: View {
         NavigationStack {
             Form {
                 Section {
+                    Picker("Auth Type", selection: $viewModel.authType) {
+                        let authTypes: [AuthType] = [.password, .apiKey]
+                        ForEach(authTypes, id: \.self) {
+                            switch $0 {
+                            case .password:
+                                Text("Password")
+                            case .apiKey:
+                                Text("API Key")
+                            }
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .foregroundColor(.black)
+                }
+                
+                Section {
                     TextField("Host", text: $viewModel.host)
-                    TextField("Username", text: $viewModel.username)
-                    TextField("Password", text: $viewModel.password)
+                    switch viewModel.authType {
+                    case .password:
+                        TextField("Password", text: $viewModel.password)
+                    case .apiKey:
+                        TextField("API Key", text: $viewModel.apiKey)
+                    }
                 }
                 .autocorrectionDisabled(true)
                 .textInputAutocapitalization(.never)
-                
                 Section {
-                    Button("Connect") {
+                    Button {
                         viewModel.createDevice()
+                    } label: {
+                        HStack {
+                            if viewModel.verifyingDevice {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                            }
+                            
+                            VStack {
+                                Text("Connect")
+                                if viewModel.connectionError {
+                                    Text("Failed to connect")
+                                        .foregroundColor(.red)
+                                }
+                            }
+                            
+                        }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .disabled(!viewModel.validDeviceConfiguration)

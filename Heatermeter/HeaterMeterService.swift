@@ -36,6 +36,7 @@ class HeaterMeterService {
         case status = "/luci/lm/api/status"
         case graph = "/luci/lm/hist"
         case login = "/luci/admin/lm"
+        case config = "/luci/lm/api/config"
     }
     
     let device: AuthedDevice
@@ -82,19 +83,73 @@ class HeaterMeterService {
         return matches.first?[1]
     }
     
-    private func get(_ request: RequestPath) async throws -> (data: Data, response: URLResponse) {
-        let host = device.host
+    enum AuthValidationResult {
+        case ok(Int)
+        case failed(Int)
+        case error
+    }
+    
+    public static func validate(device: AuthedDevice) async throws -> AuthValidationResult {
+        var queryParams: [String: String] = [:]
+        queryParams["apikey"] = device.apiKey
         
-        var urlComponents = URLComponents()
-        urlComponents.host = host
-        urlComponents.path = request.rawValue
-        urlComponents.scheme = "http"
-        
-        guard let url = urlComponents.url else {
-            throw HeaterMeterServiceError.failedToCreateURL(urlComponents)
+        let request = Request(device: device,
+                              path: .config,
+                              method: .get,
+                              queryParameters: queryParams)
+
+        let response = try await Self.perform(request: request)
+        guard let httpResponse = response.response as? HTTPURLResponse else {
+            return .error
         }
         
-        return try await URLSession.shared.data(from: url)
+        let okRange = 200...299
+        
+        if okRange.contains(httpResponse.statusCode) {
+            return .ok(httpResponse.statusCode)
+        }
+        
+        return .failed(httpResponse.statusCode)
+    }
+    
+    public func set(config: ConfigRequestModel) {
+        var configParams: [ConfigRequestFields: String] = [:]
+        
+        if let setPoint = config.setPoint {
+            configParams[.setPoint] = "\(setPoint)"
+        }
+        
+        if let alarms = config.alarms {
+            configParams[.alarms] = alarms.value
+        }
+        
+        if let probe0Name = config.probe0Name {
+            configParams[.probe0Name] = probe0Name
+        }
+        
+        if let probe1Name = config.probe1Name {
+            configParams[.probe1Name] = probe1Name
+        }
+        
+        if let probe2Name = config.probe2Name {
+            configParams[.probe2Name] = probe2Name
+        }
+        
+        if let probe3Name = config.probe3Name {
+            configParams[.probe3Name] = probe3Name
+        }
+        
+        var queryParams: [String: String] = configParams.mapKeys({$0.rawValue}, uniquingKeysWith: {$1})
+        queryParams["apikey"] = device.apiKey
+        
+        let request = Request(device: self.device,
+                              path: .config,
+                              method: .post,
+                              queryParameters: queryParams)
+
+        Task {
+            try? await Self.perform(request: request)
+        }
     }
     
     private static func perform(request: Request) async throws -> (data: Data, response: URLResponse){
@@ -116,6 +171,7 @@ class HeaterMeterService {
         
         var urlRequest = URLRequest(url: url)
         
+        urlRequest.httpBody = request.body
         urlRequest.allHTTPHeaderFields = request.headers
         urlRequest.httpMethod = request.method.rawValue
         
@@ -133,5 +189,13 @@ extension String {
         return (try? NSRegularExpression(pattern: regex, options: []))?.matches(in: self, options: [], range: NSMakeRange(0, nsString.length)).map { match in
             (0..<match.numberOfRanges).map { match.range(at: $0).location == NSNotFound ? "" : nsString.substring(with: match.range(at: $0)) }
         } ?? []
+    }
+}
+
+extension Dictionary {
+    public func mapKeys<K>(_ transform: (Key) throws -> K,
+                           uniquingKeysWith combine: (Value, Value) throws -> Value) rethrows -> [K: Value] {
+        try .init(map { (try transform($0.key), $0.value) },
+                  uniquingKeysWith: combine)
     }
 }

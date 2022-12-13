@@ -2,12 +2,12 @@
 //  DiscoveredDevice.swift
 //  Heatermeter
 //
-//  Created by Gary Kagan on 11/30/22.
+//  Created by Gary Kagan on 12/12/22.
 //
 
 import Foundation
 
-struct DiscoveredDevice: Codable, Hashable, Identifiable, Comparable {
+struct DiscoveredDevice: Device, Comparable {
     static func < (lhs: DiscoveredDevice, rhs: DiscoveredDevice) -> Bool {
         lhs.id < rhs.id
     }

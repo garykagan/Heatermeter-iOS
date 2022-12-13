@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct CredentialedDevice: Device {
+    var id: String {
+        return host + password
+    }
+    
+    let host: String
+    let password: String
+}

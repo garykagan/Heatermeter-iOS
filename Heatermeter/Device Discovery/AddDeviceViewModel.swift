@@ -9,12 +9,20 @@ import Foundation
 import SwiftUI
 import Combine
 
+enum AuthType {
+    case apiKey
+    case password
+}
+
 class AddDeviceViewModel: ObservableObject {
     @Binding var presented: Bool
     @Binding var createdDevice: AuthedDevice?
     @Published var host: String = ""
-    @Published var username: String = ""
+    @Published var apiKey: String = ""
     @Published var password: String = ""
+    @Published var authType: AuthType = .password
+    @Published var verifyingDevice: Bool = false
+    @Published var connectionError: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -28,14 +36,62 @@ class AddDeviceViewModel: ObservableObject {
         }
         
         registerFieldUpdate(publisher: self._host.projectedValue)
-        registerFieldUpdate(publisher: self._username.projectedValue)
+        registerFieldUpdate(publisher: self._apiKey.projectedValue)
         registerFieldUpdate(publisher: self._password.projectedValue)
     }
     
     func createDevice() {
-        createdDevice = AuthedDevice(host: host,
-                                     apiKey: "")
-        dismiss()
+        connectionError = false
+        verifyingDevice = true
+        Task {
+            let device: AuthedDevice?
+            switch authType {
+            case .apiKey:
+                device = await validateAndCreateAPIKeyDevice()
+            case .password:
+                device = await validateAndCreatePasswordDevice()
+            }
+            
+            await MainActor.run {
+                verifyingDevice = false
+                
+                if let device {
+                    createdDevice = device
+                    dismiss()
+                } else {
+                    connectionError = true
+                }
+            }
+        }
+    }
+    
+    private func validateAndCreateAPIKeyDevice() async -> AuthedDevice? {
+        return await validateAndCreateAPIKeyDevice(host: host,
+                                                   apiKey: apiKey)
+    }
+    
+    private func validateAndCreateAPIKeyDevice(host: String, apiKey: String) async -> AuthedDevice? {
+        let candidateDevice = AuthedDevice(host: host,
+                                           apiKey: apiKey)
+        guard let result: HeaterMeterService.AuthValidationResult = try? await HeaterMeterService.validate(device: candidateDevice) else {
+            return nil
+        }
+        
+        if case .ok(_) = result {
+            return candidateDevice
+        }
+        
+        return nil
+    }
+    
+    private func validateAndCreatePasswordDevice() async -> AuthedDevice? {
+        let credentialedDevice = CredentialedDevice(host: host,
+                                                    password: password)
+        guard let apiKey = try? await HeaterMeterService.getAPIKey(device: credentialedDevice) else {
+            return nil
+        }
+        
+        return await validateAndCreateAPIKeyDevice(host: host, apiKey: apiKey)
     }
     
     func dismiss() {
@@ -54,7 +110,12 @@ class AddDeviceViewModel: ObservableObject {
     }
     
     private func fieldUpdate() {
-        validDeviceConfiguration = validateHost() && validateUsername() && validatePassword()
+        switch authType {
+        case .apiKey:
+            validDeviceConfiguration = validateHost() && validateAPIKey()
+        case .password:
+            validDeviceConfiguration = validateHost() && validatePassword()
+        }
     }
     
     private func validateHost() -> Bool {
@@ -62,8 +123,8 @@ class AddDeviceViewModel: ObservableObject {
         return host.count > 0
     }
     
-    private func validateUsername() -> Bool {
-        return username.count > 0
+    private func validateAPIKey() -> Bool {
+        return apiKey.count > 0
     }
     
     private func validatePassword() -> Bool {

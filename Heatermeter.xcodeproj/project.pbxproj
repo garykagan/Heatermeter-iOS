@@ -42,10 +42,11 @@
 		5E528073293AB7D5003BE095 /* DNSServiceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528072293AB7D5003BE095 /* DNSServiceResolver.swift */; };
 		5E528075293BE76B003BE095 /* DNSServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528074293BE76B003BE095 /* DNSServiceBrowser.swift */; };
 		5E528077293BF0C5003BE095 /* DeviceDiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E528076293BF0C5003BE095 /* DeviceDiscoveryView.swift */; };
-		5E74FF5729480FCC0015F7AC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF5629480FCC0015F7AC /* Device.swift */; };
-		5E74FF5929480FF60015F7AC /* DiscoveredDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF5829480FF60015F7AC /* DiscoveredDevice.swift */; };
-		5E74FF5B2948101B0015F7AC /* AuthedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF5A2948101B0015F7AC /* AuthedDevice.swift */; };
-		5E74FF5D2948102A0015F7AC /* CredentialedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF5C2948102A0015F7AC /* CredentialedDevice.swift */; };
+		5E74FF7029481E8A0015F7AC /* DiscoveredDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF6C29481E8A0015F7AC /* DiscoveredDevice.swift */; };
+		5E74FF7129481E8A0015F7AC /* CredentialedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF6D29481E8A0015F7AC /* CredentialedDevice.swift */; };
+		5E74FF7229481E8A0015F7AC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF6E29481E8A0015F7AC /* Device.swift */; };
+		5E74FF7329481E8A0015F7AC /* AuthedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF6F29481E8A0015F7AC /* AuthedDevice.swift */; };
+		5E74FF75294822550015F7AC /* ConfigRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74FF74294822550015F7AC /* ConfigRequestModel.swift */; };
 		5E8A79D1293E9E2000C328A2 /* ProbeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A79D0293E9E2000C328A2 /* ProbeView.swift */; };
 		5E8A79D3293EB09B00C328A2 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A79D2293EB09B00C328A2 /* DeviceView.swift */; };
 		5E8A79D7293ED54F00C328A2 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A79D6293ED54F00C328A2 /* NumberFormatter.swift */; };
@@ -111,10 +112,11 @@
 		5E528072293AB7D5003BE095 /* DNSServiceResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSServiceResolver.swift; sourceTree = "<group>"; };
 		5E528074293BE76B003BE095 /* DNSServiceBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSServiceBrowser.swift; sourceTree = "<group>"; };
 		5E528076293BF0C5003BE095 /* DeviceDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryView.swift; sourceTree = "<group>"; };
-		5E74FF5629480FCC0015F7AC /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		5E74FF5829480FF60015F7AC /* DiscoveredDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredDevice.swift; sourceTree = "<group>"; };
-		5E74FF5A2948101B0015F7AC /* AuthedDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthedDevice.swift; sourceTree = "<group>"; };
-		5E74FF5C2948102A0015F7AC /* CredentialedDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialedDevice.swift; sourceTree = "<group>"; };
+		5E74FF6C29481E8A0015F7AC /* DiscoveredDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveredDevice.swift; sourceTree = "<group>"; };
+		5E74FF6D29481E8A0015F7AC /* CredentialedDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialedDevice.swift; sourceTree = "<group>"; };
+		5E74FF6E29481E8A0015F7AC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		5E74FF6F29481E8A0015F7AC /* AuthedDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthedDevice.swift; sourceTree = "<group>"; };
+		5E74FF74294822550015F7AC /* ConfigRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigRequestModel.swift; sourceTree = "<group>"; };
 		5E8A79D0293E9E2000C328A2 /* ProbeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProbeView.swift; sourceTree = "<group>"; };
 		5E8A79D2293EB09B00C328A2 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		5E8A79D6293ED54F00C328A2 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
@@ -271,25 +273,26 @@
 		5E5280562936D0EE003BE095 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E74FF6B29481E8A0015F7AC /* Device */,
 				5E5280542936CD83003BE095 /* CurrentStatus.swift */,
 				5E5280572936D0F9003BE095 /* Temp.swift */,
 				5E5280592936D109003BE095 /* Fan.swift */,
 				5E52805B2936D12E003BE095 /* Alarm.swift */,
 				5E5280602936EE99003BE095 /* GraphSample.swift */,
-				5E74FF5529480FC30015F7AC /* New Group */,
+				5E74FF74294822550015F7AC /* ConfigRequestModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		5E74FF5529480FC30015F7AC /* New Group */ = {
+		5E74FF6B29481E8A0015F7AC /* Device */ = {
 			isa = PBXGroup;
 			children = (
-				5E74FF5629480FCC0015F7AC /* Device.swift */,
-				5E74FF5829480FF60015F7AC /* DiscoveredDevice.swift */,
-				5E74FF5A2948101B0015F7AC /* AuthedDevice.swift */,
-				5E74FF5C2948102A0015F7AC /* CredentialedDevice.swift */,
+				5E74FF6C29481E8A0015F7AC /* DiscoveredDevice.swift */,
+				5E74FF6D29481E8A0015F7AC /* CredentialedDevice.swift */,
+				5E74FF6E29481E8A0015F7AC /* Device.swift */,
+				5E74FF6F29481E8A0015F7AC /* AuthedDevice.swift */,
 			);
-			path = "New Group";
+			path = Device;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,19 +435,17 @@
 			files = (
 				5E2F386A2943E5AE001FBF68 /* DeviceSelectionViewModel.swift in Sources */,
 				5E8A79D9293EDB6F00C328A2 /* ProbeViewModel.swift in Sources */,
-				5E74FF5B2948101B0015F7AC /* AuthedDevice.swift in Sources */,
 				5E2F381829404065001FBF68 /* NumberDiffView.swift in Sources */,
-				5E74FF5929480FF60015F7AC /* DiscoveredDevice.swift in Sources */,
+				5E74FF75294822550015F7AC /* ConfigRequestModel.swift in Sources */,
 				5E14BD53293D0EEB002000AC /* DeviceViewModel.swift in Sources */,
 				5E2F381429404008001FBF68 /* TemperatureLineMark.swift in Sources */,
 				5E2F381229403ECD001FBF68 /* Date+Extensions.swift in Sources */,
 				5E5280552936CD83003BE095 /* CurrentStatus.swift in Sources */,
 				5E2F3870294414A4001FBF68 /* NavigationDestination.swift in Sources */,
 				5E435239293CF99A00C65E0D /* DNSServiceDiscovery.swift in Sources */,
+				5E74FF7129481E8A0015F7AC /* CredentialedDevice.swift in Sources */,
 				5E2F386229413AD2001FBF68 /* Double+Extensions.swift in Sources */,
-				5E74FF5D2948102A0015F7AC /* CredentialedDevice.swift in Sources */,
 				5E8A79D3293EB09B00C328A2 /* DeviceView.swift in Sources */,
-				5E74FF5729480FCC0015F7AC /* Device.swift in Sources */,
 				5E2F38642943D818001FBF68 /* GraphSettingsView.swift in Sources */,
 				5E435237293CE17500C65E0D /* Optional+CString.swift in Sources */,
 				5E2F38682943E4F6001FBF68 /* DeviceSelectionView.swift in Sources */,
@@ -455,12 +456,14 @@
 				5E14BD4F293D09A7002000AC /* HeaterMeterService.swift in Sources */,
 				5E2F386029413A75001FBF68 /* MockGraphViewModel.swift in Sources */,
 				5E52806829379D10003BE095 /* DeviceDiscoveryViewModel.swift in Sources */,
+				5E74FF7029481E8A0015F7AC /* DiscoveredDevice.swift in Sources */,
 				5E2F38662943E377001FBF68 /* AddDeviceView.swift in Sources */,
 				5E14BD55293D4A9E002000AC /* LocalNetwork.swift in Sources */,
 				5E5280612936EE99003BE095 /* GraphSample.swift in Sources */,
 				5E8A79E1293EDEC300C328A2 /* GraphViewModel.swift in Sources */,
 				5E5280582936D0F9003BE095 /* Temp.swift in Sources */,
 				5E528075293BE76B003BE095 /* DNSServiceBrowser.swift in Sources */,
+				5E74FF7229481E8A0015F7AC /* Device.swift in Sources */,
 				5E528077293BF0C5003BE095 /* DeviceDiscoveryView.swift in Sources */,
 				5E8A79D7293ED54F00C328A2 /* NumberFormatter.swift in Sources */,
 				5E528073293AB7D5003BE095 /* DNSServiceResolver.swift in Sources */,
@@ -469,6 +472,7 @@
 				5E2F386E2943F709001FBF68 /* AddDeviceViewModel.swift in Sources */,
 				5E2F381A294040AF001FBF68 /* WindowPickerView.swift in Sources */,
 				5E8A79DF293EDD5D00C328A2 /* GraphView.swift in Sources */,
+				5E74FF7329481E8A0015F7AC /* AuthedDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

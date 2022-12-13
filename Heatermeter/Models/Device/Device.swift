@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol Device: Codable, Hashable, Identifiable {
+    var host: String { get }
+}
