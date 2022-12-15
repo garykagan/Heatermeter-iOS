@@ -22,6 +22,10 @@ struct DeviceSettingsView: View {
                     }
                 }
                 
+                Section {
+                    Toggle("Hide Disconnected Probes", isOn: $viewModel.hideDisconnectedProbesScratch)
+                }
+                
                 Section("Notifications") {
                     
                 }

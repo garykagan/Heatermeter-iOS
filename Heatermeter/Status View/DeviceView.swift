@@ -65,11 +65,11 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                         viewModel.deviceSettingsTapped()
                     }
                     .sheet(isPresented: $viewModel.deviceSettingsPresented) {
-                        DeviceSettingsView(viewModel: DeviceSettingsViewModel(status: viewModel.status, service: viewModel.service))
+                        DeviceSettingsView(viewModel: DeviceSettingsViewModel(status: viewModel.status, service: viewModel.service, hideDisconnectedProbes: $viewModel.hideDisconnectedProbes))
                     }
                     
                     ForEach(Array(viewModel.status.temps.enumerated()), id: \.offset) { index, temp in
-                        if let probe = ProbeIndex(rawValue: index) {
+                        if let probe = ProbeIndex(rawValue: index), (!viewModel.hideDisconnectedProbes || (temp.currentTemp != nil && viewModel.hideDisconnectedProbes)) {
                             let probeViewModel = viewModel.probeViewModel(probe: probe)
                             ProbeView(viewModel: probeViewModel)
                                 .padding([.leading, .trailing])

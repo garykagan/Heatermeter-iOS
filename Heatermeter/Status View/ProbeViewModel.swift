@@ -16,26 +16,37 @@ enum ProbeIndex: Int {
 }
 
 class ProbeViewModel: ObservableObject {
-    var thermometer: Temp {
-        status.temps[safe: probe.rawValue] ?? Temp(name: "", alarm: Alarm(low: 0, high: 0, ringing: nil))
-    }
+    @Published var thermometer: Temp
     
     let probe: ProbeIndex
     let service: HeaterMeterService
-    @Published var status: CurrentStatus
-    @Published var settingsPresented: Bool = false
-    var alarmTriggered: Bool {
-        return thermometer.activeAlarm != nil
+    @Published var status: CurrentStatus {
+        didSet {
+            thermometer = Self.thermometer(probe: probe, status: status)
+            activeAlarm = thermometer.activeAlarm
+            alarmTriggered = activeAlarm != nil
+            self.objectWillChange.send()
+        }
     }
+    @Published var settingsPresented: Bool = false
+    @Published var alarmTriggered: Bool
+    @Published var activeAlarm: Alarm.RingType?
     
     init(probe: ProbeIndex, status: CurrentStatus, service: HeaterMeterService) {
         self.status = status
         self.probe = probe
         self.service = service
+        let thermometer = Self.thermometer(probe: probe, status: status)
+        self.thermometer = thermometer
+        self.alarmTriggered = thermometer.activeAlarm != nil
+        self.activeAlarm = thermometer.activeAlarm
+    }
+    
+    static func thermometer(probe: ProbeIndex, status: CurrentStatus) -> Temp {
+        return status.temps[safe: probe.rawValue] ?? Temp(name: "", alarm: Alarm(low: 0, high: 0, ringing: nil))
     }
     
     func probeTapped() {
         settingsPresented = true
     }
-    
 }

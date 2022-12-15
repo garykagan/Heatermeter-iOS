@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ProbeView: View {
-    @StateObject var viewModel: ProbeViewModel
+    @ObservedObject var viewModel: ProbeViewModel
     @EnvironmentObject var theme: Theme
     
     var alarmOutlineColor: Color {
@@ -29,15 +29,32 @@ struct ProbeView: View {
         HStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(viewModel.thermometer.name)
-                        .font(.title)
-                    if viewModel.alarmTriggered {
+                    if viewModel.alarmTriggered && viewModel.activeAlarm == .high {
+                        Text(viewModel.thermometer.name)
+                            .font(.title)
+                            .blinkingForeground(colorA: theme.title,
+                                                colorB: alarmOutlineColor,
+                                                enabled: viewModel.alarmTriggered)
                         Image(systemName: "bell.and.waves.left.and.right")
+                            .blinkingForeground(colorA: theme.title,
+                                                colorB: alarmOutlineColor,
+                                                enabled: viewModel.alarmTriggered)
+                    } else if viewModel.alarmTriggered && viewModel.activeAlarm == .low {
+                        Text(viewModel.thermometer.name)
+                            .font(.title)
+                            .blinkingForeground(colorA: theme.title,
+                                                colorB: alarmOutlineColor,
+                                                enabled: viewModel.alarmTriggered)
+                        Image(systemName: "bell.and.waves.left.and.right")
+                            .blinkingForeground(colorA: theme.title,
+                                                colorB: alarmOutlineColor,
+                                                enabled: viewModel.alarmTriggered)
+                    } else {
+                        Text(viewModel.thermometer.name)
+                            .font(.title)
+                            .foregroundColor(theme.title)
                     }
                 }
-                .blinkingForeground(colorA: theme.title,
-                                    colorB: alarmOutlineColor,
-                                    enabled: viewModel.alarmTriggered)
                 HStack {
                     Text(viewModel.thermometer.currentTemp.degrees())
                         .bold()
@@ -101,10 +118,12 @@ struct ProbeView: View {
         .shadow(radius: 3.0)
         .frame(maxWidth: .infinity, alignment: .leading)
         .overlay(content: {
-            RoundedRectangle(cornerRadius: 5)
-                .stroke(viewModel.alarmTriggered ? alarmOutlineColor : .clear,
-                        lineWidth: 5)
-                .blinking(enabled: viewModel.alarmTriggered)
+            if viewModel.alarmTriggered {
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(viewModel.alarmTriggered ? alarmOutlineColor : .clear,
+                            lineWidth: 5)
+                    .blinking(enabled: viewModel.alarmTriggered)
+            }
         })
     }
 }

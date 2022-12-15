@@ -15,6 +15,11 @@ class DeviceViewModel: ObservableObject {
     @Published var status: CurrentStatus = .none
     @Published var deviceSettingsPresented: Bool = false
     @Published var updatedDate: Date = Date()
+    @Published var hideDisconnectedProbes: Bool {
+        willSet {
+            UserDefaults.standard.set(newValue, forKey: "\(device.id)_hideDisconnectedProbes")
+        }
+    }
     
     private var probeViewModels: [ProbeIndex: ProbeViewModel] = [:]
     
@@ -23,6 +28,7 @@ class DeviceViewModel: ObservableObject {
     init(device: AuthedDevice) {
         self.device = device
         self.service = HeaterMeterService(device: device)
+        self.hideDisconnectedProbes = UserDefaults.standard.bool(forKey: "\(device.id)_hideDisconnectedProbes")
         fetchStatus()
         
         statusUpdateCancellable = $status.sink { [weak self] value in
