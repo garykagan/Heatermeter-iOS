@@ -23,10 +23,13 @@ struct DeviceDiscoveryView: View {
                 }
             }
             .navigationTitle("Found HeaterMeters")
-            .navigationBarItems(leading: Button("Cancel",
-                                                role: .cancel, action: {
-                viewModel.dismiss()
-            }))
+            .toolbar() {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", role: .cancel) {
+                        viewModel.dismiss()
+                    }
+                }
+            }
         }
     }
 }

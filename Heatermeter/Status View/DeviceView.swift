@@ -82,9 +82,13 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                 }
             }
         }
-        .navigationBarItems(trailing: NavigationLink(value: NavigationDestination.graph(viewModel.device), label: {
-            Image(systemName: "waveform.path.ecg")
-        }))
+        .toolbar() {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(value: NavigationDestination.graph(viewModel.device), label: {
+                    Image(systemName: "waveform.path.ecg")
+                })
+            }
+        }
         .navigationTitle(viewModel.device.host)
             
     }

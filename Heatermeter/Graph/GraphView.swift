@@ -98,15 +98,18 @@ struct GraphView<ViewModel: GraphViewModel>: View {
                 }
             }
             .navigationTitle("Graph")
-            .navigationBarItems(trailing: Button(action: {
-                viewModel.settingsTapped()
-            }, label: {
-                Image(systemName: "gearshape")
-            })
-                .popover(isPresented: $viewModel.showingSettings) {
-                    GraphSettingsView(viewModel: viewModel)
+            .toolbar() {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        viewModel.settingsTapped()
+                    }, label: {
+                        Image(systemName: "gearshape")
+                    })
+                    .popover(isPresented: $viewModel.showingSettings) {
+                        GraphSettingsView(viewModel: viewModel)
+                    }
                 }
-            )
+            }
             .padding(EdgeInsets(top: 0, leading: 5, bottom: 10, trailing: 5))
         } else {
             Text("Loading...")

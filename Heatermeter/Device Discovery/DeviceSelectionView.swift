@@ -37,15 +37,18 @@ struct DeviceSelectionView: View {
                     GraphView(viewModel: GraphViewModelImpl(device: device))
                 }
             }
-            .navigationBarItems(trailing: Button(action: {
-                viewModel.discoverDevicesTapped()
-            }, label: {
-                Image(systemName: "badge.plus.radiowaves.right")
-            })
-                .popover(isPresented: $viewModel.deviceDiscoveryPresented, content: {
-                    DeviceDiscoveryView(viewModel: DeviceDiscoveryViewModel(presented: $viewModel.deviceDiscoveryPresented, selectedDevice: $viewModel.foundDevice))
-                })
-            )
+            .toolbar() {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        viewModel.discoverDevicesTapped()
+                    }, label: {
+                        Image(systemName: "badge.plus.radiowaves.right")
+                    })
+                    .popover(isPresented: $viewModel.deviceDiscoveryPresented, content: {
+                        DeviceDiscoveryView(viewModel: DeviceDiscoveryViewModel(presented: $viewModel.deviceDiscoveryPresented, selectedDevice: $viewModel.foundDevice))
+                    })
+                }
+            }
             .sheet(isPresented: $viewModel.addDeviceSheetPresented) {
                 AddDeviceView(viewModel: AddDeviceViewModel(discoveredDevice: viewModel.foundDevice,
                                                             presented: $viewModel.addDeviceSheetPresented,
