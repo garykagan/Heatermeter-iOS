@@ -24,6 +24,22 @@ class ProbeViewModel: ObservableObject {
     let service: HeaterMeterService
     @Published var status: CurrentStatus
     @Published var settingsPresented: Bool = false
+    var alarmTriggered: Bool {
+        return thermometer.alarm.ringing == .high || thermometer.alarm.ringing == .low
+    }
+    
+    var alarmOutlineColor: Color {
+        guard let ringType = thermometer.alarm.ringing else {
+            return .gray
+        }
+        
+        switch ringType {
+        case .high:
+            return .orange
+        case .low:
+            return .blue
+        }
+    }
     
     init(probe: ProbeIndex, status: CurrentStatus, service: HeaterMeterService) {
         self.status = status
@@ -34,4 +50,5 @@ class ProbeViewModel: ObservableObject {
     func probeTapped() {
         settingsPresented = true
     }
+    
 }

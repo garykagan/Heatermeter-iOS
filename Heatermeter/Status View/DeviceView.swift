@@ -16,44 +16,49 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                 Text("Loading...")
             } else {
                 VStack {
-                    VStack {
-                        HStack {
+                    HStack {
+                        VStack(alignment: .leading) {
                             Text("Set Point")
-                                .font(.title2)
+                                .font(.body)
                                 .foregroundColor(.white)
                             Text(viewModel.status.setPoint.degrees())
                                 .font(.title2)
                                 .foregroundColor(.yellow)
                                 .bold()
+                                .modifier(DisplayReadout())
                         }
-                        HStack {
-                            VStack {
-                                Text("Fan")
-                                Text(viewModel.status.fan.outputPercentage.percent())
-                            }
-                            .foregroundColor(.indigo)
-                            VStack {
-                                Text("Avg")
-                                Text(
-                                    viewModel.status
-                                        .fan
-                                        .averageOutputPercentage
-                                        .percent()
-                                )
-                            }
-                            .foregroundColor(.purple)
-                        }
-                        .bold()
                         .padding()
-                        .frame(maxHeight: 60)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray, lineWidth: 3)
-                        )
-                        .background(.white)
+                        Spacer()
+                        VStack {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("Fan")
+                                    Text(viewModel.status.fan.outputPercentage.percent())
+                                }
+                                .foregroundColor(.indigo)
+                                VStack(alignment: .trailing) {
+                                    Text("Avg")
+                                    Text(
+                                        viewModel.status
+                                            .fan
+                                            .averageOutputPercentage
+                                            .percent()
+                                    )
+                                }
+                                .foregroundColor(.purple)
+                            }
+                            .bold()
+                            .padding()
+                            .modifier(DisplayReadout())
+                        }
+                        .padding()
                     }
                     .frame(maxWidth: .infinity, minHeight: 120)
                     .background(Color(uiColor: .lightGray))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.indigo, lineWidth: 3)
+                    )
                     .cornerRadius(10)
                     .padding([.leading, .trailing])
                     .onTapGesture {
@@ -70,6 +75,10 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                                 .padding([.leading, .trailing])
                         }
                     }
+                    
+                    Text("Updated \(viewModel.updatedDate.formatted(.dateTime.day().month().year().hour().minute().second()))")
+                        .font(.footnote)
+                        .padding(.bottom)
                 }
             }
         }

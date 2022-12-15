@@ -14,6 +14,7 @@ class DeviceViewModel: ObservableObject {
     let service: HeaterMeterService
     @Published var status: CurrentStatus = .none
     @Published var deviceSettingsPresented: Bool = false
+    @Published var updatedDate: Date = Date()
     
     private var probeViewModels: [ProbeIndex: ProbeViewModel] = [:]
     
@@ -38,6 +39,7 @@ class DeviceViewModel: ObservableObject {
             guard let status = try? await service.status() else { return }
             await MainActor.run() {
                 self.status = status
+                self.updatedDate = Date()
             }
             try await Task.sleep(nanoseconds: NSEC_PER_SEC * UInt64(2))
             guard !Task.isCancelled else { return }

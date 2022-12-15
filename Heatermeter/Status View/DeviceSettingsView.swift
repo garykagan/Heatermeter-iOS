@@ -21,6 +21,10 @@ struct DeviceSettingsView: View {
                         Spacer()
                     }
                 }
+                
+                Section("Notifications") {
+                    
+                }
             }
             .navigationTitle("Settings")
             .toolbar {
