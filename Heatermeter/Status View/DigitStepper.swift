@@ -9,116 +9,73 @@ import Foundation
 import SwiftUI
 import Combine
 
-class DigitStepperViewModel: ObservableObject {
+struct DigitStepper: View {
     @Binding var value: Int
-    var enabled: Bool {
-        didSet {
-            if !enabled {
-                self.lastKnownValue = self.value
-                self.value = -1
-            } else {
-                self.value = self.lastKnownValue
-            }
-            print(enabled)
-        }
-    }
+    @State var enabled: Bool
     
-    @Published var lastKnownValue: Int = 0
-    
-    var enabledCancellable: AnyCancellable? = nil
+    @State var lastKnownValue: Int
     
     init(value: Binding<Int>) {
         self._value = value
-        
         self.enabled = value.wrappedValue > -1
         self.lastKnownValue = value.wrappedValue
-        
-    }
-}
-
-struct DigitStepper: View {
-    @ObservedObject var viewModel: DigitStepperViewModel
-    
-    init(value: Binding<Int>) {
-        self.viewModel = DigitStepperViewModel(value: value)
     }
     
     var body: some View {
-        var decomposed = DecomposedInteger(value: viewModel.value)
         VStack {
             HStack {
-                VStack {
-                    Button {
-                        decomposed.hundreds.increment()
-                        viewModel.value = decomposed.projectedValue
-                    } label: {
-                        Image(systemName: "chevron.up")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    
-                    Text("\(displayValue(digit: decomposed.hundreds))")
-                    
-                    Button {
-                        decomposed.hundreds.decrement()
-                        viewModel.value = decomposed.projectedValue
-                    } label: {
-                        Image(systemName: "chevron.down")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                
-                VStack {
-                    Button {
-                        decomposed.tens.increment()
-                        viewModel.value = decomposed.projectedValue
-                    } label: {
-                        Image(systemName: "chevron.up")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    
-                    Text("\(displayValue(digit: decomposed.tens))")
-                    
-                    Button {
-                        decomposed.tens.decrement()
-                        viewModel.value = decomposed.projectedValue
-                    } label: {
-                        Image(systemName: "chevron.down")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                
-                VStack {
-                    Button {
-                        decomposed.singles.increment()
-                        viewModel.value = decomposed.projectedValue
-                    } label: {
-                        Image(systemName: "chevron.up")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    
-                    Text("\(displayValue(digit: decomposed.singles))")
-                    
-                    Button {
-                        decomposed.singles.decrement()
-                        viewModel.value = decomposed.projectedValue
-                    } label: {
-                        Image(systemName: "chevron.down")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
+                digitView(digit: \.hundreds)
+                digitView(digit: \.tens)
+                digitView(digit: \.singles)
             }
             .font(.system(size: 30))
             .padding(.bottom)
             
-            Toggle(isOn: $viewModel.enabled) {
+            Toggle(isOn: $enabled) {
                 Text("Enabled")
             }
             .toggleStyle(CheckboxToggleStyle())
         }
+        .onChange(of: enabled) { newValue in
+            withAnimation(.easeOut(duration: 0.1)) {
+                if !newValue {
+                    self.lastKnownValue = self.value
+                    self.value = -1
+                } else {
+                    self.value = max(lastKnownValue, 0)
+                }
+            }
+        }
+        .onChange(of: value) { newValue in
+            enabled = value > -1
+        }
+    }
+    
+    func digitView(digit: WritableKeyPath<DecomposedInteger, Digit>) -> some View {
+        var decomposed = DecomposedInteger(value: value)
+        return VStack {
+            Button {
+                decomposed[keyPath: digit].increment()
+                value = decomposed.projectedValue
+            } label: {
+                Image(systemName: "chevron.up")
+            }
+            .buttonStyle(PlainButtonStyle())
+            
+            Text("\(displayValue(digit: decomposed[keyPath: digit]))")
+            
+            Button {
+                decomposed[keyPath: digit].decrement()
+                value = decomposed.projectedValue
+            } label: {
+                Image(systemName: "chevron.down")
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
     }
     
     func displayValue(digit: Digit) -> String {
-        if viewModel.value > -1 {
+        if value > -1 {
             return "\(digit.value)"
         } else {
             return "-"

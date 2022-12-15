@@ -38,7 +38,7 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                                     viewModel.status
                                         .fan
                                         .averageOutputPercentage
-                                        .degrees()
+                                        .percent()
                                 )
                             }
                             .foregroundColor(.purple)
@@ -48,19 +48,20 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                         .frame(maxHeight: 60)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(.white, lineWidth: 3)
+                                .stroke(.gray, lineWidth: 3)
                         )
+                        .background(.white)
                     }
                     .frame(maxWidth: .infinity, minHeight: 120)
                     .background(Color(uiColor: .lightGray))
                     .cornerRadius(10)
-                    .padding(5)
+                    .padding([.leading, .trailing])
                     
                     ForEach(Array(viewModel.status.temps.enumerated()), id: \.offset) { index, temp in
                         if let probe = ProbeIndex(rawValue: index) {
                             let probeViewModel = viewModel.probeViewModel(probe: probe)
                             ProbeView(viewModel: probeViewModel)
-                                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                                .padding([.leading, .trailing])
                         }
                     }
                 }

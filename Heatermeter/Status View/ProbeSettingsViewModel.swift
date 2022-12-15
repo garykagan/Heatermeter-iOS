@@ -40,7 +40,6 @@ class ProbeSettingsViewModel: ObservableObject {
         let finalConfig = config
         Task {
             await service.set(config: finalConfig)
-            await try? Task.sleep(nanoseconds: NSEC_PER_SEC * 2)
             await MainActor.run {
                 saving = false
             }
@@ -48,10 +47,32 @@ class ProbeSettingsViewModel: ObservableObject {
     }
     
     func setProbePreferences(on config: inout ConfigRequestModel) {
-        
+        switch probe {
+        case .probe0:
+            config.probe0Name = name
+        case .probe1:
+            config.probe1Name = name
+        case .probe2:
+            config.probe2Name = name
+        case .probe3:
+            config.probe3Name = name
+        }
     }
     
     func setAlarmPreferences(on config: inout ConfigRequestModel) {
+        var alarmSettings = AlarmSetting(temps: status.temps)
         
+        switch probe {
+        case .probe0:
+            alarmSettings.probe0 = AlarmPair(low: lowValue, high: highValue)
+        case .probe1:
+            alarmSettings.probe1 = AlarmPair(low: lowValue, high: highValue)
+        case .probe2:
+            alarmSettings.probe2 = AlarmPair(low: lowValue, high: highValue)
+        case .probe3:
+            alarmSettings.probe3 = AlarmPair(low: lowValue, high: highValue)
+        }
+        
+        config.alarms = alarmSettings
     }
 }

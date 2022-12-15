@@ -25,23 +25,9 @@ class ProbeViewModel: ObservableObject {
     @Published var status: CurrentStatus
     @Published var settingsPresented: Bool = false
     
-    private var probeSettingsVm: ProbeSettingsViewModel? = nil
-    
     init(probe: ProbeIndex, status: CurrentStatus, service: HeaterMeterService) {
         self.status = status
         self.probe = probe
         self.service = service
-    }
-    
-    func probeSettingsViewModel() -> ProbeSettingsViewModel {
-        guard let probeSettingsVm else {
-            let viewModel = ProbeSettingsViewModel(probe: probe,
-                                                   service: service,
-                                                   status: status)
-            self.probeSettingsVm = viewModel
-            return viewModel
-        }
-        
-        return probeSettingsVm
     }
 }

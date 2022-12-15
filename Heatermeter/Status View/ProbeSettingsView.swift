@@ -13,12 +13,12 @@ struct ProbeSettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section {
+                Section("Probe Name") {
                     TextField("Name", text: $viewModel.name)
                         .foregroundColor(.black)
                 }
                 
-                Section {
+                Section("Probe Alarms") {
                     HStack {
                         Spacer()
                         DigitStepper(value: $viewModel.lowValue)

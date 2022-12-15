@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct DeviceSettingsView: View {
+    var body: some View {
+        Text("")
+    }
+}

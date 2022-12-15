@@ -17,12 +17,12 @@ enum ConfigRequestFields: String {
 }
 
 struct ConfigRequestModel {
-    let probe0Name: String?
-    let probe1Name: String?
-    let probe2Name: String?
-    let probe3Name: String?
-    let setPoint: Int?
-    let alarms: AlarmSetting?
+    var probe0Name: String?
+    var probe1Name: String?
+    var probe2Name: String?
+    var probe3Name: String?
+    var setPoint: Int?
+    var alarms: AlarmSetting?
     
     init(probe0Name: String? = nil, probe1Name: String? = nil, probe2Name: String? = nil, probe3Name: String? = nil, setPoint: Int? = nil, alarms: AlarmSetting? = nil) {
         self.probe0Name = probe0Name
@@ -35,15 +35,33 @@ struct ConfigRequestModel {
 }
 
 struct AlarmSetting {
-    let probe0: AlarmPair
-    let probe1: AlarmPair
-    let probe2: AlarmPair
-    let probe3: AlarmPair
+    var probe0: AlarmPair
+    var probe1: AlarmPair
+    var probe2: AlarmPair
+    var probe3: AlarmPair
     
     var value: String {
         return [probe0, probe1, probe2, probe3]
             .map({ $0.value })
             .joined(separator: ",")
+    }
+    
+    init(probe0: AlarmPair, probe1: AlarmPair, probe2: AlarmPair, probe3: AlarmPair) {
+        self.probe0 = probe0
+        self.probe1 = probe1
+        self.probe2 = probe2
+        self.probe3 = probe3
+    }
+    
+    init(temps: [Temp]) {
+        self.init(probe0: AlarmPair(low: temps[safe: 0]?.alarm.low,
+                                                           high: temps[safe: 0]?.alarm.high),
+                                         probe1: AlarmPair(low: temps[safe: 1]?.alarm.low,
+                                                           high: temps[safe: 1]?.alarm.high),
+                                         probe2: AlarmPair(low: temps[safe: 2]?.alarm.low,
+                                                           high: temps[safe: 2]?.alarm.high),
+                                         probe3: AlarmPair(low: temps[safe: 3]?.alarm.low,
+                                                           high: temps[safe: 3]?.alarm.high))
     }
 }
 
