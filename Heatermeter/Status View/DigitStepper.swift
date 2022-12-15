@@ -14,11 +14,17 @@ struct DigitStepper: View {
     @State var enabled: Bool
     
     @State var lastKnownValue: Int
+    var disableable: Bool
     
-    init(value: Binding<Int>) {
+    init(value: Binding<Int>, disableable: Bool = true) {
         self._value = value
-        self.enabled = value.wrappedValue > -1
+        if disableable {
+            self.enabled = value.wrappedValue > -1
+        } else {
+            self.enabled = true
+        }
         self.lastKnownValue = value.wrappedValue
+        self.disableable = disableable
     }
     
     var body: some View {
@@ -31,10 +37,12 @@ struct DigitStepper: View {
             .font(.system(size: 30))
             .padding(.bottom)
             
-            Toggle(isOn: $enabled) {
-                Text("Enabled")
+            if disableable {
+                Toggle(isOn: $enabled) {
+                    Text("Enabled")
+                }
+                .toggleStyle(CheckboxToggleStyle())
             }
-            .toggleStyle(CheckboxToggleStyle())
         }
         .onChange(of: enabled) { newValue in
             withAnimation(.easeOut(duration: 0.1)) {
@@ -47,7 +55,9 @@ struct DigitStepper: View {
             }
         }
         .onChange(of: value) { newValue in
-            enabled = value > -1
+            if disableable {
+                enabled = value > -1
+            }
         }
     }
     

@@ -64,7 +64,7 @@ class HeaterMeterService {
     }
     
     public static func getAPIKey(device: CredentialedDevice) async throws -> String? {
-        let body = "luci_username=root&luci_password=\(device.password)"
+        let body = "luci_username=\(device.username)&luci_password=\(device.password)"
             .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)?
             .data(using: .utf8)
         let request = Request(device: device,

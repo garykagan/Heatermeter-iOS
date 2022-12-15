@@ -9,7 +9,38 @@ import Foundation
 import SwiftUI
 
 struct DeviceSettingsView: View {
+    @StateObject var viewModel: DeviceSettingsViewModel
+    
     var body: some View {
-        Text("")
+        NavigationStack {
+            Form {
+                Section("Set Point") {
+                    HStack {
+                        Spacer()
+                        DigitStepper(value: $viewModel.setPoint, disableable: false)
+                        Spacer()
+                    }
+                }
+            }
+            .navigationTitle("Settings")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        viewModel.saveButtonTapped()
+                    } label: {
+                        if viewModel.saving {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                            Spacer()
+                                .frame(minWidth: 5, maxWidth: 5)
+                            Text("Saving")
+                        } else {
+                            Text("Save")
+                        }
+                    }
+                    .disabled(viewModel.saving)
+                }
+            }
+        }
     }
 }

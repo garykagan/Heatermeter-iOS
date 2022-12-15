@@ -31,6 +31,7 @@
 		5E2F3870294414A4001FBF68 /* NavigationDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2F386F294414A4001FBF68 /* NavigationDestination.swift */; };
 		5E435237293CE17500C65E0D /* Optional+CString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E435236293CE17500C65E0D /* Optional+CString.swift */; };
 		5E435239293CF99A00C65E0D /* DNSServiceDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E435238293CF99A00C65E0D /* DNSServiceDiscovery.swift */; };
+		5E4EEB6A294AAB4F00D4171E /* DeviceSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4EEB69294AAB4F00D4171E /* DeviceSettingsViewModel.swift */; };
 		5E5280552936CD83003BE095 /* CurrentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280542936CD83003BE095 /* CurrentStatus.swift */; };
 		5E5280582936D0F9003BE095 /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280572936D0F9003BE095 /* Temp.swift */; };
 		5E52805A2936D109003BE095 /* Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280592936D109003BE095 /* Fan.swift */; };
@@ -105,6 +106,7 @@
 		5E2F386F294414A4001FBF68 /* NavigationDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDestination.swift; sourceTree = "<group>"; };
 		5E435236293CE17500C65E0D /* Optional+CString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+CString.swift"; sourceTree = "<group>"; };
 		5E435238293CF99A00C65E0D /* DNSServiceDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSServiceDiscovery.swift; sourceTree = "<group>"; };
+		5E4EEB69294AAB4F00D4171E /* DeviceSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSettingsViewModel.swift; sourceTree = "<group>"; };
 		5E5280542936CD83003BE095 /* CurrentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentStatus.swift; sourceTree = "<group>"; };
 		5E5280572936D0F9003BE095 /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
 		5E5280592936D109003BE095 /* Fan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fan.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				5E8A79D0293E9E2000C328A2 /* ProbeView.swift */,
 				5E74FF76294835E40015F7AC /* ProbeSettingsView.swift */,
 				5E74FF7A294835ED0015F7AC /* DeviceSettingsView.swift */,
+				5E4EEB69294AAB4F00D4171E /* DeviceSettingsViewModel.swift */,
 				5E8A79D8293EDB6F00C328A2 /* ProbeViewModel.swift */,
 				5E5DD6F42948C181001CB005 /* ProbeSettingsViewModel.swift */,
 				5E14BD52293D0EEB002000AC /* DeviceViewModel.swift */,
@@ -478,6 +481,7 @@
 				5E8A79E1293EDEC300C328A2 /* GraphViewModel.swift in Sources */,
 				5E5280582936D0F9003BE095 /* Temp.swift in Sources */,
 				5E528075293BE76B003BE095 /* DNSServiceBrowser.swift in Sources */,
+				5E4EEB6A294AAB4F00D4171E /* DeviceSettingsViewModel.swift in Sources */,
 				5E74FF7229481E8A0015F7AC /* Device.swift in Sources */,
 				5E528077293BF0C5003BE095 /* DeviceDiscoveryView.swift in Sources */,
 				5E8A79D7293ED54F00C328A2 /* NumberFormatter.swift in Sources */,

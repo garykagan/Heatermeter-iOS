@@ -30,4 +30,8 @@ class ProbeViewModel: ObservableObject {
         self.probe = probe
         self.service = service
     }
+    
+    func probeTapped() {
+        settingsPresented = true
+    }
 }

@@ -13,9 +13,7 @@ import SwiftUI
 class DeviceDiscoveryViewModel: ObservableObject {
     @Binding var presented: Bool
     @Binding var selectedDevice: DiscoveredDevice?
-    @Published var devices: [DiscoveredDevice] = [
-        DiscoveredDevice(name: "HeaterMeter on", host: "heatermeter.local", port: 1)
-    ]
+    @Published var devices: [DiscoveredDevice] = []
     var serviceDiscovery: DNSServiceDiscovery? = nil
     var devicesCancellable: Cancellable? = nil
     let localNetworkAuthorization: LocalNetworkAuthorization = LocalNetworkAuthorization()
@@ -27,8 +25,8 @@ class DeviceDiscoveryViewModel: ObservableObject {
         localNetworkAuthorization.requestAuthorization { authed in
             let service = DNSService(type: "_http._tcp")
             self.serviceDiscovery = DNSServiceDiscovery(service: service)
-//            self.configure()
-//            self.start()
+            self.configure()
+            self.start()
         }
     }
     

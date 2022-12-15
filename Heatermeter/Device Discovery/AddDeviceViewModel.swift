@@ -19,6 +19,7 @@ class AddDeviceViewModel: ObservableObject {
     @Binding var createdDevice: AuthedDevice?
     @Published var host: String = ""
     @Published var apiKey: String = ""
+    @Published var username: String = "root"
     @Published var password: String = ""
     @Published var authType: AuthType = .password
     @Published var verifyingDevice: Bool = false
@@ -38,6 +39,7 @@ class AddDeviceViewModel: ObservableObject {
         registerFieldUpdate(publisher: self._host.projectedValue)
         registerFieldUpdate(publisher: self._apiKey.projectedValue)
         registerFieldUpdate(publisher: self._password.projectedValue)
+        registerFieldUpdate(publisher: self._username.projectedValue)
     }
     
     func createDevice() {
@@ -86,6 +88,7 @@ class AddDeviceViewModel: ObservableObject {
     
     private func validateAndCreatePasswordDevice() async -> AuthedDevice? {
         let credentialedDevice = CredentialedDevice(host: host,
+                                                    username: username,
                                                     password: password)
         guard let apiKey = try? await HeaterMeterService.getAPIKey(device: credentialedDevice) else {
             return nil
@@ -114,7 +117,7 @@ class AddDeviceViewModel: ObservableObject {
         case .apiKey:
             validDeviceConfiguration = validateHost() && validateAPIKey()
         case .password:
-            validDeviceConfiguration = validateHost() && validatePassword()
+            validDeviceConfiguration = validateHost() && validatePassword() && validateUsername()
         }
     }
     
@@ -125,6 +128,10 @@ class AddDeviceViewModel: ObservableObject {
     
     private func validateAPIKey() -> Bool {
         return apiKey.count > 0
+    }
+    
+    private func validateUsername() -> Bool {
+        return username.count > 0
     }
     
     private func validatePassword() -> Bool {

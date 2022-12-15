@@ -13,6 +13,7 @@ class DeviceViewModel: ObservableObject {
     let device: AuthedDevice
     let service: HeaterMeterService
     @Published var status: CurrentStatus = .none
+    @Published var deviceSettingsPresented: Bool = false
     
     private var probeViewModels: [ProbeIndex: ProbeViewModel] = [:]
     
@@ -38,7 +39,7 @@ class DeviceViewModel: ObservableObject {
             await MainActor.run() {
                 self.status = status
             }
-            try await Task.sleep(nanoseconds: NSEC_PER_SEC * UInt64(5))
+            try await Task.sleep(nanoseconds: NSEC_PER_SEC * UInt64(2))
             guard !Task.isCancelled else { return }
             fetchStatus()
         }
@@ -52,6 +53,10 @@ class DeviceViewModel: ObservableObject {
         }
         
         return probeViewModel
+    }
+    
+    func deviceSettingsTapped() {
+        deviceSettingsPresented = true
     }
 }
 

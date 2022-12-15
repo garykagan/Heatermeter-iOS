@@ -56,6 +56,12 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                     .background(Color(uiColor: .lightGray))
                     .cornerRadius(10)
                     .padding([.leading, .trailing])
+                    .onTapGesture {
+                        viewModel.deviceSettingsTapped()
+                    }
+                    .sheet(isPresented: $viewModel.deviceSettingsPresented) {
+                        DeviceSettingsView(viewModel: DeviceSettingsViewModel(status: viewModel.status, service: viewModel.service))
+                    }
                     
                     ForEach(Array(viewModel.status.temps.enumerated()), id: \.offset) { index, temp in
                         if let probe = ProbeIndex(rawValue: index) {

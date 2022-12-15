@@ -13,5 +13,6 @@ struct CredentialedDevice: Device {
     }
     
     let host: String
+    let username: String
     let password: String
 }

@@ -180,9 +180,6 @@ class GraphViewModelImpl: GraphViewModel {
         let roundedYAxisMaxValue = roundUp(limits.max, to: 2)
         let roundedYAxisMinValue = roundUp(limits.min, to: 2)
         let strideValue = max(abs(roundedYAxisMaxValue), abs(roundedYAxisMinValue)) / 3.0
-        print("rounded y max", roundedYAxisMaxValue)
-        print("rounded y min", roundedYAxisMinValue)
-        print("stride", strideValue)
         return strideValue
     }
     

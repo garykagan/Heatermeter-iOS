@@ -31,12 +31,33 @@ struct AddDeviceView: View {
                 }
                 
                 Section {
-                    TextField("Host", text: $viewModel.host)
+                    VStack(alignment: .leading) {
+                        Text("Host")
+                            .foregroundColor(.black.opacity(0.75))
+                            .font(.system(size: 14))
+                        TextField("Host", text: $viewModel.host, prompt: Text("x.x.x.x"))
+                    }
                     switch viewModel.authType {
                     case .password:
-                        TextField("Password", text: $viewModel.password)
+                        VStack(alignment: .leading) {
+                            Text("Username")
+                                .foregroundColor(.black.opacity(0.75))
+                                .font(.system(size: 14))
+                            TextField("Username", text: $viewModel.username, prompt: Text("user"))
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Password")
+                                .foregroundColor(.black.opacity(0.75))
+                                .font(.system(size: 14))
+                            SecureField("Password", text: $viewModel.password, prompt: Text("***********"))
+                        }
                     case .apiKey:
-                        TextField("API Key", text: $viewModel.apiKey)
+                        VStack(alignment: .leading) {
+                            Text("API Key")
+                                .foregroundColor(.black.opacity(0.75))
+                                .font(.system(size: 14))
+                            TextField("API Key", text: $viewModel.apiKey, prompt: Text("xxxxxxxxxxxxxxxxxxxxxx"))
+                        }
                     }
                 }
                 .autocorrectionDisabled(true)

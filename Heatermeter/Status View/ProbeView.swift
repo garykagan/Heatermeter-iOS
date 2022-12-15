@@ -68,7 +68,7 @@ struct ProbeView: View {
         .foregroundColor(.white)
         .cornerRadius(10)
         .onTapGesture() {
-            viewModel.settingsPresented = true
+            viewModel.probeTapped()
         }
         .sheet(isPresented: $viewModel.settingsPresented) {
             ProbeSettingsView(viewModel: ProbeSettingsViewModel(probe: viewModel.probe,

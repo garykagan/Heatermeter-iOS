@@ -49,12 +49,12 @@ struct CurrentStatus: Codable, Equatable {
         case temps
     }
     
-    let setPoint: Double
+    let setPoint: Int
     let lidOpenTimer: Int
     let fan: Fan
     let temps: [Temp]
     
-    static let none: CurrentStatus = CurrentStatus(setPoint: 0.0,
+    static let none: CurrentStatus = CurrentStatus(setPoint: 0,
                                                    lidOpenTimer: 0,
                                                    fan: .none,
                                                    temps: [])
