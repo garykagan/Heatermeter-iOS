@@ -10,21 +10,33 @@ import SwiftUI
 
 struct ProbeView: View {
     @StateObject var viewModel: ProbeViewModel
+    @EnvironmentObject var theme: Theme
+    
+    var alarmOutlineColor: Color {
+        guard let ringType = viewModel.thermometer.activeAlarm else {
+            return .gray
+        }
+        
+        switch ringType {
+        case .high:
+            return theme.high
+        case .low:
+            return theme.low
+        }
+    }
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(viewModel.thermometer.name)
                     .font(.title)
-                    .blinkingForeground(colorA: .white, colorB: viewModel.alarmOutlineColor, enabled: viewModel.alarmTriggered)
-                    .task {
-                        print(viewModel.probe)
-                        print(viewModel.alarmTriggered)
-                    }
+                    .blinkingForeground(colorA: theme.title,
+                                        colorB: alarmOutlineColor,
+                                        enabled: viewModel.alarmTriggered)
                 HStack {
                     Text(viewModel.thermometer.currentTemp.degrees())
                         .bold()
-                        .foregroundColor(.gray)
+                        .foregroundColor(theme.currentTemp)
                 }
                 .modifier(DisplayReadout())
             }
@@ -36,18 +48,19 @@ struct ProbeView: View {
                         Image(systemName: "thermometer.high")
                         Text(viewModel.thermometer.alarm.high.degrees(allowNegative: false))
                     }
-                    .foregroundColor(.orange)
+                    .foregroundColor(theme.high)
                     .bold()
                     .padding(EdgeInsets(top: 3, leading: 3, bottom: 0, trailing: 3))
                     HStack {
                         Image(systemName: "thermometer.low")
                         Text(viewModel.thermometer.alarm.low.degrees(allowNegative: false))
                     }
-                    .foregroundColor(.blue)
+                    .foregroundColor(theme.low)
                     .bold()
                     .padding(EdgeInsets(top: 0, leading: 3, bottom: 3, trailing: 3))
                 }
-                .modifier(DisplayReadout(outlineColor: viewModel.alarmOutlineColor, blinks: viewModel.alarmTriggered))
+                .modifier(DisplayReadout(outlineColor: alarmOutlineColor,
+                                         blinks: viewModel.alarmTriggered))
                 .padding([.top, .trailing])
                 
                 VStack {
@@ -60,7 +73,7 @@ struct ProbeView: View {
                         Text("\(viewModel.thermometer.degreesPerHour.degrees(allowNegative: true)) / Hr")
                     }
                     .bold()
-                    .foregroundColor(.teal)
+                    .foregroundColor(theme.degreesPerHour)
                     .padding()
                     .font(.system(size: 12))
                 }
@@ -69,8 +82,8 @@ struct ProbeView: View {
             }
         }
         .frame(minWidth: 200, maxWidth: .infinity, minHeight: 120)
-        .background(Color(uiColor: .lightGray))
-        .foregroundColor(.white)
+        .background(theme.tileBackground)
+        .foregroundColor(theme.title)
         .cornerRadius(10)
         .onTapGesture() {
             viewModel.probeTapped()
@@ -84,7 +97,8 @@ struct ProbeView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .overlay(content: {
             RoundedRectangle(cornerRadius: 5)
-                .stroke(viewModel.alarmTriggered ? viewModel.alarmOutlineColor : .clear, lineWidth: 5)
+                .stroke(viewModel.alarmTriggered ? alarmOutlineColor : .clear,
+                        lineWidth: 5)
                 .blinking(enabled: viewModel.alarmTriggered)
         })
     }

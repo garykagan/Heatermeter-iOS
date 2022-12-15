@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DeviceView<ViewModel: DeviceViewModel>: View {
     @StateObject var viewModel: ViewModel
+    @EnvironmentObject var theme: Theme
     
     var body: some View {
         ScrollView {
@@ -20,10 +21,10 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                         VStack(alignment: .leading) {
                             Text("Set Point")
                                 .font(.body)
-                                .foregroundColor(.white)
+                                .foregroundColor(theme.title)
                             Text(viewModel.status.setPoint.degrees())
                                 .font(.title2)
-                                .foregroundColor(.yellow)
+                                .foregroundColor(theme.setPoint)
                                 .bold()
                                 .modifier(DisplayReadout())
                         }
@@ -35,7 +36,6 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                                     Text("Fan")
                                     Text(viewModel.status.fan.outputPercentage.percent())
                                 }
-                                .foregroundColor(.indigo)
                                 VStack(alignment: .trailing) {
                                     Text("Avg")
                                     Text(
@@ -45,8 +45,8 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                                             .percent()
                                     )
                                 }
-                                .foregroundColor(.purple)
                             }
+                            .foregroundColor(theme.fan)
                             .bold()
                             .padding()
                             .modifier(DisplayReadout())
@@ -54,7 +54,7 @@ struct DeviceView<ViewModel: DeviceViewModel>: View {
                         .padding()
                     }
                     .frame(maxWidth: .infinity, minHeight: 120)
-                    .background(Color(uiColor: .lightGray))
+                    .background(theme.tileBackground)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(.indigo, lineWidth: 3)

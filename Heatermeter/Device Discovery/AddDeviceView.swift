@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AddDeviceView: View {
     @StateObject var viewModel: AddDeviceViewModel
+    @EnvironmentObject var theme: Theme
     
     var body: some View {
         NavigationStack {
@@ -33,7 +34,7 @@ struct AddDeviceView: View {
                 Section {
                     VStack(alignment: .leading) {
                         Text("Host")
-                            .foregroundColor(.black.opacity(0.75))
+                            .foregroundColor(theme.formTitle)
                             .font(.system(size: 14))
                         TextField("Host", text: $viewModel.host, prompt: Text("x.x.x.x"))
                     }
@@ -41,20 +42,20 @@ struct AddDeviceView: View {
                     case .password:
                         VStack(alignment: .leading) {
                             Text("Username")
-                                .foregroundColor(.black.opacity(0.75))
+                                .foregroundColor(theme.formTitle)
                                 .font(.system(size: 14))
                             TextField("Username", text: $viewModel.username, prompt: Text("user"))
                         }
                         VStack(alignment: .leading) {
                             Text("Password")
-                                .foregroundColor(.black.opacity(0.75))
+                                .foregroundColor(theme.formTitle)
                                 .font(.system(size: 14))
                             SecureField("Password", text: $viewModel.password, prompt: Text("***********"))
                         }
                     case .apiKey:
                         VStack(alignment: .leading) {
                             Text("API Key")
-                                .foregroundColor(.black.opacity(0.75))
+                                .foregroundColor(theme.formTitle)
                                 .font(.system(size: 14))
                             TextField("API Key", text: $viewModel.apiKey, prompt: Text("xxxxxxxxxxxxxxxxxxxxxx"))
                         }
@@ -76,7 +77,7 @@ struct AddDeviceView: View {
                                 Text("Connect")
                                 if viewModel.connectionError {
                                     Text("Failed to connect")
-                                        .foregroundColor(.red)
+                                        .foregroundColor(theme.formError)
                                 }
                             }
                             
@@ -88,7 +89,8 @@ struct AddDeviceView: View {
             }
             .navigationTitle("Add Device")
             .navigationBarItems(leading: Button("Cancel",
-                                                role: .cancel, action: {
+                                                role: .cancel,
+                                                action: {
                 viewModel.dismiss()
             }))
         }

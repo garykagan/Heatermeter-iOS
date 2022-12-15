@@ -43,6 +43,20 @@ struct Temp: Codable, Identifiable, Equatable {
     let alarm: Alarm
     let rf: RF?
     
+    var activeAlarm: Alarm.RingType? {
+        guard let currentTemp else {
+            return nil
+        }
+        
+        if alarm.high > -1 && Double(alarm.high) < currentTemp {
+            return .high
+        } else if alarm.low > -1 && Double(alarm.low) > currentTemp {
+            return .low
+        }
+        
+        return nil
+    }
+    
     init(name: String, currentTemp: Double? = nil, degreesPerHour: Double? = nil, alarm: Alarm, rf: RF? = nil) {
         self.name = name
         self.currentTemp = currentTemp

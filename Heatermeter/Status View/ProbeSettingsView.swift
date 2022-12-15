@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ProbeSettingsView: View {
     @StateObject var viewModel: ProbeSettingsViewModel
+    @EnvironmentObject var theme: Theme
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -22,10 +24,10 @@ struct ProbeSettingsView: View {
                     HStack {
                         Spacer()
                         DigitStepper(value: $viewModel.lowValue)
-                            .foregroundColor(.blue)
+                            .foregroundColor(theme.low)
                         Spacer(minLength: 10)
                         DigitStepper(value: $viewModel.highValue)
-                            .foregroundColor(.orange)
+                            .foregroundColor(theme.high)
                         Spacer()
                     }
                 }

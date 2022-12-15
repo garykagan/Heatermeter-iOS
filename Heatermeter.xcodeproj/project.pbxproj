@@ -32,6 +32,7 @@
 		5E435237293CE17500C65E0D /* Optional+CString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E435236293CE17500C65E0D /* Optional+CString.swift */; };
 		5E435239293CF99A00C65E0D /* DNSServiceDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E435238293CF99A00C65E0D /* DNSServiceDiscovery.swift */; };
 		5E4EEB6A294AAB4F00D4171E /* DeviceSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4EEB69294AAB4F00D4171E /* DeviceSettingsViewModel.swift */; };
+		5E4EEB6C294BBCF600D4171E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4EEB6B294BBCF600D4171E /* Theme.swift */; };
 		5E5280552936CD83003BE095 /* CurrentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280542936CD83003BE095 /* CurrentStatus.swift */; };
 		5E5280582936D0F9003BE095 /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280572936D0F9003BE095 /* Temp.swift */; };
 		5E52805A2936D109003BE095 /* Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5280592936D109003BE095 /* Fan.swift */; };
@@ -107,6 +108,7 @@
 		5E435236293CE17500C65E0D /* Optional+CString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+CString.swift"; sourceTree = "<group>"; };
 		5E435238293CF99A00C65E0D /* DNSServiceDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSServiceDiscovery.swift; sourceTree = "<group>"; };
 		5E4EEB69294AAB4F00D4171E /* DeviceSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSettingsViewModel.swift; sourceTree = "<group>"; };
+		5E4EEB6B294BBCF600D4171E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5E5280542936CD83003BE095 /* CurrentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentStatus.swift; sourceTree = "<group>"; };
 		5E5280572936D0F9003BE095 /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
 		5E5280592936D109003BE095 /* Fan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fan.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				5E14BD4E293D09A7002000AC /* HeaterMeterService.swift */,
 				5E8A79D6293ED54F00C328A2 /* NumberFormatter.swift */,
 				5E2F386F294414A4001FBF68 /* NavigationDestination.swift */,
+				5E4EEB6B294BBCF600D4171E /* Theme.swift */,
 				5E2F381029403E92001FBF68 /* Device Discovery */,
 				5E2F380F29403E78001FBF68 /* Status View */,
 				5E2F380E29403E6C001FBF68 /* Graph */,
@@ -477,6 +480,7 @@
 				5E74FF7029481E8A0015F7AC /* DiscoveredDevice.swift in Sources */,
 				5E2F38662943E377001FBF68 /* AddDeviceView.swift in Sources */,
 				5E14BD55293D4A9E002000AC /* LocalNetwork.swift in Sources */,
+				5E4EEB6C294BBCF600D4171E /* Theme.swift in Sources */,
 				5E5280612936EE99003BE095 /* GraphSample.swift in Sources */,
 				5E8A79E1293EDEC300C328A2 /* GraphViewModel.swift in Sources */,
 				5E5280582936D0F9003BE095 /* Temp.swift in Sources */,

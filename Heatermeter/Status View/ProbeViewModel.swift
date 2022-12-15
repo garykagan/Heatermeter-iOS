@@ -25,20 +25,7 @@ class ProbeViewModel: ObservableObject {
     @Published var status: CurrentStatus
     @Published var settingsPresented: Bool = false
     var alarmTriggered: Bool {
-        return thermometer.alarm.ringing == .high || thermometer.alarm.ringing == .low
-    }
-    
-    var alarmOutlineColor: Color {
-        guard let ringType = thermometer.alarm.ringing else {
-            return .gray
-        }
-        
-        switch ringType {
-        case .high:
-            return .orange
-        case .low:
-            return .blue
-        }
+        return thermometer.activeAlarm != nil
     }
     
     init(probe: ProbeIndex, status: CurrentStatus, service: HeaterMeterService) {
