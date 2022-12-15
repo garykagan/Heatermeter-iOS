@@ -28,11 +28,16 @@ struct ProbeView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(viewModel.thermometer.name)
-                    .font(.title)
-                    .blinkingForeground(colorA: theme.title,
-                                        colorB: alarmOutlineColor,
-                                        enabled: viewModel.alarmTriggered)
+                HStack {
+                    Text(viewModel.thermometer.name)
+                        .font(.title)
+                    if viewModel.alarmTriggered {
+                        Image(systemName: "bell.and.waves.left.and.right")
+                    }
+                }
+                .blinkingForeground(colorA: theme.title,
+                                    colorB: alarmOutlineColor,
+                                    enabled: viewModel.alarmTriggered)
                 HStack {
                     Text(viewModel.thermometer.currentTemp.degrees())
                         .bold()
