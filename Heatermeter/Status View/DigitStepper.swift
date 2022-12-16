@@ -116,15 +116,35 @@ struct DecomposedInteger {
     
     init(value: Int) {
         let hundresRemainder = value % 100
-        self.hundreds = Digit(value: (value - hundresRemainder) / 100, multiplier: 100)
         let tensRemainder = hundresRemainder % 10
+        self.hundreds = Digit(value: (value - hundresRemainder) / 100, multiplier: 100)
         self.tens = Digit(value: (hundresRemainder - tensRemainder) / 10, multiplier: 10)
         self.singles = Digit(value: tensRemainder, multiplier: 1)
     }
 }
 
+@propertyWrapper struct ConstrainedInt {
+    let min: Int
+    let max: Int
+    var value: Int = 0
+    var wrappedValue: Int {
+        set {
+            if newValue > max {
+                value = min
+            } else if newValue < min {
+                value = max
+            } else {
+                value = newValue
+            }
+        }
+        get {
+            return value
+        }
+    }
+}
+
 struct Digit {
-    var value: Int
+    @ConstrainedInt(min: 0, max: 9) var value: Int
     var multiplier: Int
     
     var projectedValue: Int {
@@ -135,20 +155,17 @@ struct Digit {
         return "\(value)"
     }
     
+    init(value: Int, multiplier: Int) {
+        self.multiplier = multiplier
+        self.value = value
+    }
+    
     mutating func increment() {
-        if value >= 9 {
-            value = 0
-        } else {
-            value += 1
-        }
+        value += 1
     }
     
     mutating func decrement() {
-        if value <= 0 {
-            value = 9
-        } else {
-            value -= 1
-        }
+        value -= 1
     }
 }
 
