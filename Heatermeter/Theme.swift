@@ -9,16 +9,17 @@ import Foundation
 import SwiftUI
 
 class Theme: ObservableObject {
-    let high: Color = .orange
-    let low: Color = .blue
-    let setPoint: Color = .yellow
-    let tileBackground: Color = Color(uiColor: .lightGray)
-    let degreesPerHour: Color = .teal
-    let fan: Color = .purple
-    let currentTemp: Color = .gray
+    let high: Color = Color("high")
+    let low: Color = Color("low")
+    let setPoint: Color = Color("setPoint")
+    let tileBackground: Color = Color("tileBackground")
+    let degreesPerHour: Color = Color("dph")
+    let fan: Color = Color("fan")
+    let currentTemp: Color = Color("currentTemp")
     
-    let title: Color = .white
+    let title: Color = Color("title")
     
-    let formTitle: Color = .black.opacity(0.75)
-    let formError: Color = .red
+    let formTitle: Color = Color("formTitle")
+    let formError: Color = Color("formError")
+    let displayBackground: Color = Color("displayBackground")
 }

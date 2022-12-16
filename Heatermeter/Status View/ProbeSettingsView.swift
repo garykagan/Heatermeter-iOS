@@ -17,7 +17,6 @@ struct ProbeSettingsView: View {
             Form {
                 Section("Probe Name") {
                     TextField("Name", text: $viewModel.name)
-                        .foregroundColor(.black)
                 }
                 
                 Section("Probe Alarms") {

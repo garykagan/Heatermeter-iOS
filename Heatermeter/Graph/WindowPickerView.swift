@@ -28,7 +28,6 @@ struct WindowPickerView<ViewModel: GraphViewModel>: View {
             }
         }
         .pickerStyle(.segmented)
-        .foregroundColor(.black)
     }
 }
 

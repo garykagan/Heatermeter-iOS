@@ -28,7 +28,6 @@ struct AddDeviceView: View {
                         }
                     }
                     .pickerStyle(.segmented)
-                    .foregroundColor(.black)
                 }
                 
                 Section {

@@ -129,6 +129,7 @@ struct ProbeView: View {
 }
 
 struct DisplayReadout: ViewModifier {
+    @EnvironmentObject var theme: Theme
     var outlineColor: Color
     var blinks: Bool
     
@@ -141,7 +142,7 @@ struct DisplayReadout: ViewModifier {
         content
             .frame(minWidth: 75)
             .frame(height: 50)
-            .background(.white)
+            .background(theme.displayBackground)
             .overlay(content: {
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(outlineColor, lineWidth: 5)
